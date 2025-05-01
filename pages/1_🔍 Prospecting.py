@@ -229,7 +229,35 @@ if not filtered_df.empty:
                 if 'url' in article and article['url']:
                     url_html = f"<div class='article-url'><a href='{article['url']}' target='_blank'>{article['url']}</a></div>"
                     st.markdown(url_html, unsafe_allow_html=True)
-                                        
+
+                # Display analysis information if available
+                if 'analysis' in article:
+                    analysis = article['analysis']
+                    expander_title = f"Show Analysis from {analysis['analysis_date']}" if 'analysis_date' in analysis else "Show Analysis"
+                    
+                    with st.expander(expander_title):
+                        # Display analysis information in a clean format
+                        if 'analysis_confidence' in analysis:
+                            st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Confidence:</strong> {analysis['analysis_confidence']}/100</div>", unsafe_allow_html=True)
+
+                        if 'original_confidence' in analysis:
+                            st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Original Confidence:</strong> {analysis['original_confidence']}/100</div>", unsafe_allow_html=True)                        
+
+                        if 'analysis_explanation' in analysis:
+                            st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Explanation:</strong> {analysis['analysis_explanation']}</div>", unsafe_allow_html=True)
+                        
+                        if 'analysis_company' in analysis and analysis['analysis_company']:
+                            st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Company:</strong> {analysis['analysis_company']}</div>", unsafe_allow_html=True)
+                        
+                        if 'analysis_location' in analysis and analysis['analysis_location']:
+                            st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Location:</strong> {analysis['analysis_location']}</div>", unsafe_allow_html=True)
+                        
+                        if 'analysis_contact' in analysis and analysis['analysis_contact']:
+                            st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Contact:</strong> {analysis['analysis_contact']}</div>", unsafe_allow_html=True)
+                        
+                        if 'analysis_summary' in analysis and analysis['analysis_summary']:
+                            st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Project Summary:</strong> {analysis['analysis_summary']}</div>", unsafe_allow_html=True)
+
             with cols[1]:
                 # Stack buttons vertically to make them wider
                 analyze_button = st.button("Analyze", key=f"analyze_{article_id}", type="primary", use_container_width=True)
@@ -265,11 +293,11 @@ if not filtered_df.empty:
                             st.success(f"Article kept!")
                         else:
                             st.error(f"Failed to keep article.")
-            
+
             # Much thinner separator line using the CSS class
             st.markdown("<hr class='article-separator'>", unsafe_allow_html=True)
-else:
-    st.info("No articles found matching your filters.")
+        else:
+            st.info("No articles found matching your filters.")
 
 # Footer
 st.divider()

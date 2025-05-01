@@ -54,7 +54,7 @@
     margin-bottom: 0px;
     padding-left: 25px;
     padding-top: 0px;
-    padding-bottom: 0px;
+    padding-bottom: 20px;
 }
 
 /* Separator Styles */
@@ -64,4 +64,59 @@
     padding-top: 0px;
     padding-bottom: 0px;
     border-top: 1px solid #e0e0e0;
+}
+
+/* Analysis Item Styles */
+.analysis-item {
+    padding-left: 25px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.analysis-label {
+    color: #333;
+    font-weight: 600;
+    min-width: 120px;
+    display: inline-block;
+}
+
+/* Optional: Style the expander container */
+.stExpander {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+/* Optional: Style the expander header */
+.stExpander > div:first-child > div:first-child {
+    background-color: #f8f9fa;
+    border-radius: 5px 5px 0 0;
+}
+
+/* Optional: Style the expander content area */
+.stExpander > div:last-child {
+    background-color: #f8f9fa;
+    border-radius: 0 0 5px 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* Debug Info Styles */
+.debug-info {
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-family: monospace;
+    font-size: 0.9em;
+    overflow-x: auto;
+    border-left: 3px solid #607D8B;
+}
+
+/* Loading Indicator */
+.analysis-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #555;
 }
