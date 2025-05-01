@@ -1,0 +1,67 @@
+/* Global Styles */
+.element-container {
+    margin-bottom: -10px;
+}
+
+.row-widget.stButton {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+/* Article Container Styles */
+.article-container {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.article-header {
+    font-size: 1.5em;
+    line-height: 100%;
+    margin-bottom: 0px;
+    padding-bottom: 40px;
+}
+
+.article-title {
+    font-size: 1.25em;
+    line-height: 100%;
+    margin-bottom: 0px;
+    padding-bottom: 20px;
+}
+
+.article-excerpt {
+    line-height: 100%;
+    font-size: 1.0em;
+    font-style: italic;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 25px;
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+
+.article-metadata {
+    line-height: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 25px;
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+
+.article-url {
+    line-height: 100%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 25px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/* Separator Styles */
+.article-separator {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-top: 1px solid #e0e0e0;
+}
