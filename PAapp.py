@@ -8,7 +8,7 @@ import uuid
 
 # Constants - modify these as needed
 START_URL = 'https://chainstoreage.com/news'
-CUTOFF_DATE = datetime(2025, 4, 25)  # Articles before this date will not be scraped
+CUTOFF_DATE = datetime(2025, 4, 27)  # Articles before this date will not be scraped
 OUTPUT_FILE = 'articles.json'
 
 def fetch_and_parse(url, parser='html.parser', extract_data=False):
