@@ -29,4 +29,4 @@ The application provides an intuitive interface for filtering, sorting, and taki
 ## Contact
 
 Created by CtiPath - [company website](https://ctipath.com)
-![CtiPath Logo](assets/CtiPath-logo.png)
+<img src="assets/CtiPath-logo.png" alt="CtiPath Logo" width="200"/>
