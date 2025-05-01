@@ -2,6 +2,7 @@ import json
 import os
 import datetime
 import pandas as pd
+import boto3
 
 def load_json_file(file_path):
     """Load data from a JSON file, return empty list if file doesn't exist."""
@@ -114,3 +115,26 @@ def keep_all_articles(articles, kept_file='articles-kept.json'):
         if keep_article(article, kept_file):
             successfully_kept += 1
     return successfully_kept
+
+def call_bedrock_llm(
+    prompt: str,
+    model_name: str = "us.amazon.nova-lite-v1:0",
+    ) -> str:
+    
+    client = boto3.client(
+        service_name="bedrock-runtime",
+        aws_access_key_id=os.environ["AWS_ACCESS_KEY"],
+        aws_secret_access_key=os.environ["AWS_SECRET_KEY"],
+        region_name=os.environ["AWS_REGION"]
+    )
+
+    messages = [
+        {"role": "user", "content": [{"text": prompt}]}
+    ]
+
+    model_response = client.converse(
+        modelId=model_name,
+        messages=messages
+    )
+    response_text = model_response["output"]["message"]["content"][0]["text"]
+    return response_text
