@@ -22,10 +22,6 @@ The application provides an intuitive interface for filtering, sorting, and taki
 - **Workflow Management**: Three-stage workflow to take articles from initial review to final collection
 - **Data Export**: Export collected articles in various formats (JSON, CSV, Excel)
 
-### Styling
-
-The application uses an external CSS file (`styles.css`) for all styling. You can modify this file to customize the appearance without changing the Python code.
-
 ## License
 
 [MIT License](LICENSE)
@@ -33,4 +29,4 @@ The application uses an external CSS file (`styles.css`) for all styling. You ca
 ## Contact
 
 Created by CtiPath - [company website](https://ctipath.com)
-![CtiPath Logo](CtiPath-logo.png)
+![CtiPath Logo](assets/CtiPath-logo.png)
