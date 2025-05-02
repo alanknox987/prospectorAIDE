@@ -1,121 +1,31 @@
 [
     {
-        "articleID": "6b15990c-2658-528e-9a25-ae0e733f45c0",
-        "title": "Survey: Consumers want companies to support DEI, environmental causes",
-        "excerpt": "While some retailers have rolled back diversity, equity and inclusion (DEI) initiatives, consumers are still looking for companies to support social causes and sustainability.",
-        "url": "https://chainstoreage.com/survey-consumers-want-companies-support-dei-environmental-causes",
-        "date": "2025-05-02T14:51:21",
+        "articleID": "b19b6fe2-ae85-5bba-999f-acfaa40b81ec",
+        "title": "Survey: In-store retail ads help drive sales, engagement",
+        "excerpt": "Consumers have an overwhelming positive reception to in-store retail media.",
+        "url": "https://chainstoreage.com/survey-store-retail-ads-help-drive-sales-engagement",
+        "date": "2025-05-02T15:52:42",
+        "company": "",
+        "location": "",
+        "confidence": 20
+    },
+    {
+        "articleID": "b1443ede-9fda-5233-8931-8709454a16b1",
+        "title": "Gartner: Here\u00e2\u0080\u0099s how supply chain execs will manage tariff costs",
+        "excerpt": "Results of a new Gartner survey shed light on how supply chain leaders plan to mitigate the potential financial impact of tariffs.",
+        "url": "https://chainstoreage.com/gartner-heres-how-supply-chain-execs-will-manage-tariff-costs",
+        "date": "2025-05-02T15:52:42",
         "company": "",
         "location": "",
         "confidence": 0
     },
     {
-        "articleID": "cf119803-6598-5665-ad54-898e6585d5a1",
-        "title": "7-Eleven, Green Day partner on pop-up store, Spotify playlist",
-        "excerpt": "7-Eleven, Inc. is expanding its omnichannel collaboration with a legendary Gen X punk group.",
-        "url": "https://chainstoreage.com/7-eleven-green-day-partner-pop-store-spotify-playlist",
-        "date": "2025-05-02T14:51:21",
-        "company": "7-Eleven, Inc.",
-        "location": "",
-        "confidence": 10
-    },
-    {
-        "articleID": "469edf2e-8991-5997-ad10-850e100232be",
-        "title": "Playa Bowls targets North Carolina's Triad region for growth",
-        "excerpt": "Playa Bowls is looking to grow its footprint in the Tar Heel State.",
-        "url": "https://chainstoreage.com/playa-bowls-targets-north-carolinas-triad-region-growth",
-        "date": "2025-05-02T14:51:21",
-        "company": "Playa Bowls",
-        "location": "North Carolina's Triad region",
-        "confidence": 20
-    },
-    {
-        "articleID": "2ad73123-15cd-5c84-b894-36203bc915f6",
-        "title": "Q&A: New Biggby Coffee president talks expansion plans",
-        "excerpt": "Biggby Coffee has named a new president as it looks to expand its footprint.",
-        "url": "https://chainstoreage.com/qa-new-biggby-coffee-president-talks-expansion-plans",
-        "date": "2025-05-02T14:51:21",
-        "company": "Biggby Coffee",
-        "location": "",
-        "confidence": 20
-    },
-    {
-        "articleID": "e732cb41-38bd-5ec7-8ffc-9b683d80e9d1",
-        "title": "How to prepare for Prime Day in uncertain times",
-        "excerpt": "Nobody knows exactly what the retail landscape will look like in July, but we know the annual Amazon Prime Day sales extravaganza is taking place.",
-        "url": "https://chainstoreage.com/how-prepare-prime-day-uncertain-times",
-        "date": "2025-05-02T14:51:21",
-        "company": "Amazon",
-        "location": "",
-        "confidence": 0
-    },
-    {
-        "articleID": "f5cea9a4-2857-5f2b-871c-457996fba570",
-        "title": "Amazon Q1 earnings easily beat Street; Q2 guidance disappoints",
-        "excerpt": "Amazon beat Wall Street estimates for both its top and bottom line, but offered weaker than expected second-quarter guidance.",
-        "url": "https://chainstoreage.com/amazon-q1-earnings-easily-beat-street-q2-guidance-disappoints",
-        "date": "2025-05-02T14:51:21",
-        "company": "Amazon",
-        "location": "",
-        "confidence": 0
-    },
-    {
-        "articleID": "4cd7c4c2-e5b1-5e90-9470-10156e545d37",
-        "title": "Albertsons, Instacart provide online Mother\u00e2\u0080\u0099s Day hubs",
-        "excerpt": "A major grocer and a leading grocery technology company are both offering online shoppers a dedicated destination to buy gifts for Mom.",
-        "url": "https://chainstoreage.com/albertsons-instacart-provide-online-mothers-day-hubs",
-        "date": "2025-05-02T14:51:21",
-        "company": "Albertsons, Instacart",
-        "location": "",
-        "confidence": 10
-    },
-    {
-        "articleID": "f58f0db2-e135-5e64-9616-1ba470b62294",
-        "title": "Publix Q1 sales increase, earnings fall; stock price rises",
-        "excerpt": "Publix reported mixed results for its first quarter.",
-        "url": "https://chainstoreage.com/publix-q1-sales-increase-earnings-fall-stock-price-rises",
-        "date": "2025-05-02T14:51:21",
-        "company": "Publix",
-        "location": "",
-        "confidence": 0
-    },
-    {
-        "articleID": "6a5b24c5-93b8-5398-acde-fc608a35816b",
-        "title": "Leasing demand strong at Tanger centers in Q1",
-        "excerpt": "Tanger has shared strong financial results and leasing metrics to start 2025.",
-        "url": "https://chainstoreage.com/leasing-demand-strong-tanger-centers-q1",
-        "date": "2025-05-02T14:51:21",
-        "company": "Tanger",
-        "location": "",
-        "confidence": 0
-    },
-    {
-        "articleID": "e79ce922-e06e-5290-9c8c-ef40788b187c",
-        "title": "Instacart acquires e-commerce technology firm Wynshop",
-        "excerpt": "Instacart is strengthening its position as a provider of e-commerce solutions for grocers.",
-        "url": "https://chainstoreage.com/instacart-acquires-e-commerce-technology-firm-wynshop",
-        "date": "2025-05-02T14:51:21",
-        "company": "Instacart",
-        "location": "",
-        "confidence": 0
-    },
-    {
-        "articleID": "6b87a217-80c4-59ac-b307-d38eeeb02d66",
-        "title": "Amazon investing more than $4B in rural delivery",
-        "excerpt": "Amazon is making a major commitment to giving customers in small towns access to fast delivery.",
-        "url": "https://chainstoreage.com/amazon-investing-more-4b-rural-delivery",
-        "date": "2025-05-01T15:09:14",
-        "company": "Amazon",
-        "location": "",
-        "confidence": 0
-    },
-    {
-        "articleID": "a055716e-4f10-5018-bdbe-162b6bd18c62",
-        "title": "L.L.Bean takes month-long break from social media \u00e2\u0080\u0094 here\u00e2\u0080\u0099s why",
-        "excerpt": "For the fourth consecutive year, L.L.Bean is going \u00e2\u0080\u009coff the grid\u00e2\u0080\u009d during the month of May.",
-        "url": "https://chainstoreage.com/llbean-takes-month-long-break-social-media-heres-why",
-        "date": "2025-05-01T15:09:14",
-        "company": "L.L.Bean",
+        "articleID": "6b15990c-2658-528e-9a25-ae0e733f45c0",
+        "title": "Survey: Consumers want companies to support DEI, environmental causes",
+        "excerpt": "While some retailers have rolled back diversity, equity and inclusion (DEI) initiatives, consumers are still looking for companies to support social causes and sustainability.",
+        "url": "https://chainstoreage.com/survey-consumers-want-companies-support-dei-environmental-causes",
+        "date": "2025-05-02T15:52:42",
+        "company": "",
         "location": "",
         "confidence": 0
     },
@@ -124,8 +34,118 @@
         "title": "L\u00e2\u0080\u0099Oreal deploys AI to personalize SkinCeuticals skincare brand site",
         "excerpt": "The world\u00e2\u0080\u0099s largest cosmetics company is significantly enhancing online marketing performance of one of its brands.",
         "url": "https://chainstoreage.com/loreal-deploys-ai-personalize-skinceuticals-skincare-brand-site",
-        "date": "2025-05-01T15:09:14",
+        "date": "2025-05-02T15:52:42",
         "company": "L'Oreal",
+        "location": "",
+        "confidence": 0
+    },
+    {
+        "articleID": "cf119803-6598-5665-ad54-898e6585d5a1",
+        "title": "7-Eleven, Green Day partner on pop-up store, Spotify playlist",
+        "excerpt": "7-Eleven, Inc. is expanding its omnichannel collaboration with a legendary Gen X punk group.",
+        "url": "https://chainstoreage.com/7-eleven-green-day-partner-pop-store-spotify-playlist",
+        "date": "2025-05-02T15:52:42",
+        "company": "7-Eleven",
+        "location": "",
+        "confidence": 30
+    },
+    {
+        "articleID": "469edf2e-8991-5997-ad10-850e100232be",
+        "title": "Playa Bowls targets North Carolina's Triad region for growth",
+        "excerpt": "Playa Bowls is looking to grow its footprint in the Tar Heel State.",
+        "url": "https://chainstoreage.com/playa-bowls-targets-north-carolinas-triad-region-growth",
+        "date": "2025-05-02T15:52:42",
+        "company": "Playa Bowls",
+        "location": "North Carolina's Triad region",
+        "confidence": 40
+    },
+    {
+        "articleID": "2ad73123-15cd-5c84-b894-36203bc915f6",
+        "title": "Q&A: New Biggby Coffee president talks expansion plans",
+        "excerpt": "Biggby Coffee has named a new president as it looks to expand its footprint.",
+        "url": "https://chainstoreage.com/qa-new-biggby-coffee-president-talks-expansion-plans",
+        "date": "2025-05-02T15:52:42",
+        "company": "Biggby Coffee",
+        "location": "",
+        "confidence": 30
+    },
+    {
+        "articleID": "e732cb41-38bd-5ec7-8ffc-9b683d80e9d1",
+        "title": "How to prepare for Prime Day in uncertain times",
+        "excerpt": "Nobody knows exactly what the retail landscape will look like in July, but we know the annual Amazon Prime Day sales extravaganza is taking place.",
+        "url": "https://chainstoreage.com/how-prepare-prime-day-uncertain-times",
+        "date": "2025-05-02T15:52:42",
+        "company": "Amazon",
+        "location": "",
+        "confidence": 10
+    },
+    {
+        "articleID": "f5cea9a4-2857-5f2b-871c-457996fba570",
+        "title": "Amazon Q1 earnings easily beat Street; Q2 guidance disappoints",
+        "excerpt": "Amazon beat Wall Street estimates for both its top and bottom line, but offered weaker than expected second-quarter guidance.",
+        "url": "https://chainstoreage.com/amazon-q1-earnings-easily-beat-street-q2-guidance-disappoints",
+        "date": "2025-05-02T15:52:42",
+        "company": "Amazon",
+        "location": "",
+        "confidence": 10
+    },
+    {
+        "articleID": "4cd7c4c2-e5b1-5e90-9470-10156e545d37",
+        "title": "Albertsons, Instacart provide online Mother\u00e2\u0080\u0099s Day hubs",
+        "excerpt": "A major grocer and a leading grocery technology company are both offering online shoppers a dedicated destination to buy gifts for Mom.",
+        "url": "https://chainstoreage.com/albertsons-instacart-provide-online-mothers-day-hubs",
+        "date": "2025-05-02T15:52:42",
+        "company": "Albertsons, Instacart",
+        "location": "",
+        "confidence": 20
+    },
+    {
+        "articleID": "f58f0db2-e135-5e64-9616-1ba470b62294",
+        "title": "Publix Q1 sales increase, earnings fall; stock price rises",
+        "excerpt": "Publix reported mixed results for its first quarter.",
+        "url": "https://chainstoreage.com/publix-q1-sales-increase-earnings-fall-stock-price-rises",
+        "date": "2025-05-01T16:12:32",
+        "company": "Publix",
+        "location": "",
+        "confidence": 10
+    },
+    {
+        "articleID": "6a5b24c5-93b8-5398-acde-fc608a35816b",
+        "title": "Leasing demand strong at Tanger centers in Q1",
+        "excerpt": "Tanger has shared strong financial results and leasing metrics to start 2025.",
+        "url": "https://chainstoreage.com/leasing-demand-strong-tanger-centers-q1",
+        "date": "2025-05-01T16:12:32",
+        "company": "Tanger",
+        "location": "",
+        "confidence": 10
+    },
+    {
+        "articleID": "e79ce922-e06e-5290-9c8c-ef40788b187c",
+        "title": "Instacart acquires e-commerce technology firm Wynshop",
+        "excerpt": "Instacart is strengthening its position as a provider of e-commerce solutions for grocers.",
+        "url": "https://chainstoreage.com/instacart-acquires-e-commerce-technology-firm-wynshop",
+        "date": "2025-05-01T16:12:32",
+        "company": "Instacart",
+        "location": "",
+        "confidence": 20
+    },
+    {
+        "articleID": "6b87a217-80c4-59ac-b307-d38eeeb02d66",
+        "title": "Amazon investing more than $4B in rural delivery",
+        "excerpt": "Amazon is making a major commitment to giving customers in small towns access to fast delivery.",
+        "url": "https://chainstoreage.com/amazon-investing-more-4b-rural-delivery",
+        "date": "2025-05-01T16:12:32",
+        "company": "Amazon",
+        "location": "",
+        "confidence": 20
+    },
+    {
+        "articleID": "a055716e-4f10-5018-bdbe-162b6bd18c62",
+        "title": "L.L.Bean takes month-long break from social media \u00e2\u0080\u0094 here\u00e2\u0080\u0099s why",
+        "excerpt": "For the fourth consecutive year, L.L.Bean is going \u00e2\u0080\u009coff the grid\u00e2\u0080\u009d during the month of May.",
+        "url": "https://chainstoreage.com/llbean-takes-month-long-break-social-media-heres-why",
+        "date": "2025-05-01T16:12:32",
+        "company": "L.L.Bean",
         "location": "",
         "confidence": 0
     },
@@ -134,7 +154,7 @@
         "title": "Sleep Number expands C-suite roles",
         "excerpt": "A major mattress retailer is shaking up its leadership team under the direction of its new CEO.",
         "url": "https://chainstoreage.com/sleep-number-expands-c-suite-roles",
-        "date": "2025-05-01T15:09:14",
+        "date": "2025-05-01T16:12:32",
         "company": "Sleep Number",
         "location": "",
         "confidence": 0
@@ -144,7 +164,7 @@
         "title": "PayPal veteran tapped as eBay's next CFO",
         "excerpt": "eBay has announced a chief financial officer transition, while expanding the duties of two other C-suite members.",
         "url": "https://chainstoreage.com/paypal-veteran-tapped-ebays-next-cfo",
-        "date": "2025-05-01T15:09:14",
+        "date": "2025-05-01T16:12:32",
         "company": "eBay",
         "location": "",
         "confidence": 0
@@ -154,7 +174,7 @@
         "title": "Kohl\u00e2\u0080\u0099s fires new CEO 'for cause,' names interim chief",
         "excerpt": "Kohl\u00e2\u0080\u0099s Corp. has fired its chief executive four months after he stepped into the role.",
         "url": "https://chainstoreage.com/kohls-fires-new-ceo-cause-names-interim-chief",
-        "date": "2025-05-01T15:09:14",
+        "date": "2025-05-01T16:12:32",
         "company": "Kohl\u00e2\u0080\u0099s",
         "location": "",
         "confidence": 0
@@ -164,7 +184,7 @@
         "title": "Walmart to open second 3D-printed store addition",
         "excerpt": "Walmart Inc. is following up on an historic construction milestone it achieved in fall 2024.",
         "url": "https://chainstoreage.com/walmart-open-second-3d-printed-store-addition",
-        "date": "2025-05-01T15:09:14",
+        "date": "2025-05-01T16:12:32",
         "company": "Walmart",
         "location": "",
         "confidence": 50
@@ -174,38 +194,18 @@
         "title": "Home Depot expands selection of tax-free items for military shoppers",
         "excerpt": "The Home Depot is extending shopping benefits for military families and veterans.",
         "url": "https://chainstoreage.com/home-depot-expands-selection-tax-free-items-military-shoppers",
-        "date": "2025-05-01T15:09:14",
+        "date": "2025-05-01T16:12:32",
         "company": "Home Depot",
         "location": "",
-        "confidence": 0
+        "confidence": 20
     },
     {
         "articleID": "28059a90-b93f-5951-9c22-c04332913d47",
         "title": "Verizon: Retail cyberattacks on the rise",
         "excerpt": "The retail industry is seeing an increase in its annual number cyberincidents as criminals are seeking a wider variety of data.",
         "url": "https://chainstoreage.com/verizon-retail-cyberattacks-rise",
-        "date": "2025-05-01T15:09:14",
+        "date": "2025-04-30T20:06:56",
         "company": "Verizon",
-        "location": "",
-        "confidence": 0
-    },
-    {
-        "articleID": "b579177e-c11a-5832-aa94-718e3696a674",
-        "title": "Beyond to open Overstock stores, test BuyBuy Baby location",
-        "excerpt": "Beyond Inc. is dipping its foot into brick-and-mortar retailer.",
-        "url": "https://chainstoreage.com/beyond-open-overstock-stores-test-buybuy-baby-location",
-        "date": "2025-05-01T15:09:14",
-        "company": "Beyond Inc.",
-        "location": "",
-        "confidence": 70
-    },
-    {
-        "articleID": "17471f70-0632-5fc4-801b-d411c67fdc70",
-        "title": "BuzzFeed integrates shoppable product recommendations into articles",
-        "excerpt": "A leading online news and entertainment platform is partnering to bring product recommendations directly into its articles.",
-        "url": "https://chainstoreage.com/buzzfeed-integrates-shoppable-product-recommendations-articles",
-        "date": "2025-04-30T17:56:15",
-        "company": "BuzzFeed",
         "location": "",
         "confidence": 0
     }

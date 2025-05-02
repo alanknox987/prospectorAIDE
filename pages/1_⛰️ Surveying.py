@@ -50,8 +50,7 @@ START_URL = 'https://chainstoreage.com/news'
 
 # Calculate yesterday's date
 yesterday = datetime.now() - timedelta(days=1)
-# Use the same constructor format as your original code
-CUTOFF_DATE = datetime(yesterday.year, yesterday.month, yesterday.day)  # Articles before this date will not be scraped
+default_cutoff_date = yesterday.date()  
 
 # Load data
 @st.cache_data(ttl=10)  # Cache with a short time-to-live to allow refreshing
@@ -78,29 +77,44 @@ if not articles:
 # Convert to DataFrame
 df = get_articles_df(articles)
 
-# Buttons for "Analyze All" and "Keep All"
 col1, col2 = st.columns(2)
-with col1:
-    if st.button("Load/Review Prospects", type="primary", use_container_width=True):
-        with st.spinner("Loading prospects from ChainStoreAge..."):
-            # Run analysis on all articles
-            loaded_articles = find_articles_chainstoreage(START_URL, CUTOFF_DATE)
-        
-        with st.spinner("Reviewing new prospects..."):
-            reviewed_articles = review_articles(loaded_articles)
-
-        with st.spinner("Saving prospects to file..."):
-            # Save back to file
-            save_json_file(reviewed_articles, PROSPECTS_FILE)
-            # Show success message
-            st.success(f"Successfully loaded/reviewed {len(loaded_articles)} articles.")
-            # Clear cache to reload data
-            st.cache_data.clear()
-            # Rerun to update UI
-            st.rerun()
+col1, col2 = st.columns(2)
 
 with col2:
     st.markdown(" ")
+
+with col1:
+    # Date input field for CUTOFF_DATE
+    selected_cutoff_date = st.date_input(
+        "Cutoff Date (articles before this date will not be selected)",
+        value=default_cutoff_date
+    )
+    # Convert the selected date to datetime at midnight
+    cutoff_datetime = datetime.combine(selected_cutoff_date, datetime.min.time())
+
+    st.markdown(" ")
+    if st.button("Load/Review Prospects", type="primary", use_container_width=True):
+        # Use the cutoff_datetime defined above
+        progress_container = st.container()
+        
+        with progress_container:
+            with st.spinner("Loading prospects from ChainStoreAge..."):
+                # Run analysis on all articles
+                loaded_articles = find_articles_chainstoreage(START_URL, cutoff_datetime)
+            
+            with st.spinner("Reviewing new prospects..."):
+                reviewed_articles = review_articles(loaded_articles)
+
+            with st.spinner("Saving prospects to file..."):
+                # Save back to file
+                save_json_file(reviewed_articles, PROSPECTS_FILE)
+                # Show success message
+                st.success(f"Successfully loaded/reviewed {len(loaded_articles)} articles.")
+                # Clear cache to reload data
+                st.cache_data.clear()
+                
+        # Rerun to update UI
+        st.rerun()
 
 # Filtering and sorting options
 st.subheader("Filter and Sort Prospects", anchor=False)
