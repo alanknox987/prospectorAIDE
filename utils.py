@@ -398,6 +398,7 @@ Article content:
         # Add analysis date and ID
         analysis_data['analysis_date'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         analysis_data['analysis_id'] = str(uuid.uuid4())
+        analysis_data['original_confidence'] = article['confidence']
         
         # Log debug information
         log_debug_info("Parsed analysis data", analysis_data)
@@ -415,9 +416,6 @@ Article content:
                 if 'confidence' not in analyzed_article:
                     analyzed_article['confidence'] = 0
         
-        if analyzed_article['confidence'] != article['confidence']:
-            analyzed_article['original_confidence'] = article['confidence']
-
         # Update company and location if available from analysis
         if 'analysis_company' in analysis_data and analysis_data['analysis_company']:
             analyzed_article['company'] = analysis_data['analysis_company']
