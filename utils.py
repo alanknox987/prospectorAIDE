@@ -476,7 +476,7 @@ def get_articles_df(articles):
     
     return df
 
-def keep_article(article, kept_file='articles-kept.json'):
+def keep_article(article, kept_file):
     """
     Save the article to the kept file.
     Returns True if successful, False otherwise.
@@ -504,7 +504,7 @@ def keep_article(article, kept_file='articles-kept.json'):
         print(f"Error keeping article: {e}")
         return False
 
-def keep_all_articles(articles, kept_file='articles-kept.json'):
+def keep_all_articles(articles, kept_file):
     """
     Save all articles to the kept file.
     Returns the number of successfully kept articles.
