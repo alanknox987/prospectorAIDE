@@ -45,14 +45,14 @@ with header:
 st.markdown("Review and analyze potential articles for your sales pipeline.")
 
 # File paths
-ARTICLES_FILE = "data/article-confidence.json"
-KEPT_ARTICLES_FILE = "data/articles-kept.json"
+PROSPECTS_FILE = "data/prospects-new.json"
+KEPT_PROSPECTS_FILE = "data/prospects-kept.json"
 
 # Load data
 @st.cache_data(ttl=10)  # Cache with a short time-to-live to allow refreshing
 def load_data():
     try:
-        articles = load_json_file(ARTICLES_FILE)
+        articles = load_json_file(PROSPECTS_FILE)
         # If articles is a list of dictionaries, convert to list and extract 'articleID'
         if articles and isinstance(articles, list) and 'articleID' in articles[0]:
             # Make sure each article has an index based on its position
@@ -68,7 +68,7 @@ articles = load_data()
 
 # Display message if no articles loaded
 if not articles:
-    st.warning(f"No articles found in {ARTICLES_FILE}. Please check that the file exists and contains valid JSON data.")
+    st.warning(f"No articles found in {PROSPECTS_FILE}. Please check that the file exists and contains valid JSON data.")
 
 # Convert to DataFrame
 df = get_articles_df(articles)
@@ -81,7 +81,7 @@ with col1:
             # Run analysis on all articles
             analyzed_articles = analyze_all(articles)
             # Save back to file
-            save_json_file(analyzed_articles, ARTICLES_FILE)
+            save_json_file(analyzed_articles, PROSPECTS_FILE)
             # Show success message
             st.success(f"Successfully analyzed {len(analyzed_articles)} articles.")
             # Clear cache to reload data
@@ -93,7 +93,7 @@ with col2:
     if st.button("Keep All", type="secondary", use_container_width=True):
         with st.spinner("Keeping all articles..."):
             # Keep all articles
-            kept_count = keep_all_articles(articles, KEPT_ARTICLES_FILE)
+            kept_count = keep_all_articles(articles, KEPT_PROSPECTS_FILE)
             # Show success message
             st.success(f"Successfully kept {kept_count} articles.")
 
@@ -276,7 +276,7 @@ if not filtered_df.empty:
                                 break
                         
                         # Save back to file
-                        save_json_file(articles, ARTICLES_FILE)
+                        save_json_file(articles, PROSPECTS_FILE)
                         
                         # Show success message
                         st.success(f"Article analyzed!")
@@ -289,7 +289,7 @@ if not filtered_df.empty:
                 
                 if keep_button:
                     with st.spinner("Keeping..."):
-                        if keep_article(article, KEPT_ARTICLES_FILE):
+                        if keep_article(article, KEPT_PROSPECTS_FILE):
                             st.success(f"Article kept!")
                         else:
                             st.error(f"Failed to keep article.")
