@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import os
 import sys
-import datetime
 
 # Add parent directory to path to import utils
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
@@ -73,30 +72,6 @@ if not articles:
 # Convert to DataFrame
 df = get_articles_df(articles)
 
-# Buttons for "Analyze All" and "Keep All"
-col1, col2 = st.columns(2)
-with col1:
-    if st.button("Analyze All", type="primary", use_container_width=True):
-        with st.spinner("Analyzing all articles..."):
-            # Run analysis on all articles
-            analyzed_articles = analyze_all(articles)
-            # Save back to file
-            save_json_file(analyzed_articles, PROSPECTS_FILE)
-            # Show success message
-            st.success(f"Successfully analyzed {len(analyzed_articles)} articles.")
-            # Clear cache to reload data
-            st.cache_data.clear()
-            # Rerun to update UI
-            st.rerun()
-
-with col2:
-    if st.button("Keep All", type="secondary", use_container_width=True):
-        with st.spinner("Keeping all articles..."):
-            # Keep all articles
-            kept_count = keep_all_articles(articles, KEPT_PROSPECTS_FILE)
-            # Show success message
-            st.success(f"Successfully kept {kept_count} articles.")
-
 # Filtering and sorting options
 st.subheader("Filter and Sort Articles", anchor=False)
 col1, col2, col3, col4 = st.columns([1, 1, 1, 1])
@@ -128,6 +103,7 @@ with col4:
     sort_selection = st.selectbox("Sort By", sort_options)
 
 # Apply filters
+filtered_df = pd.DataFrame()  # Initialize with an empty DataFrame
 if not df.empty:
     filtered_df = df.copy()
     
@@ -161,8 +137,47 @@ if not df.empty:
             filtered_df = filtered_df.sort_values('confidence', ascending=False)
         elif sort_selection == 'Confidence (lowest first)':
             filtered_df = filtered_df.sort_values('confidence', ascending=True)
-else:
-    filtered_df = pd.DataFrame()
+
+# Buttons for "Analyze All" and "Keep All"
+col1, col2 = st.columns(2)
+with col1:
+    if st.button("Analyze All", type="primary", use_container_width=True):
+        with st.spinner("Analyzing all filtered articles..."):
+            # Get the list of article IDs from the filtered DataFrame
+            filtered_article_ids = filtered_df['articleID'].tolist() if not filtered_df.empty else []
+            
+            if filtered_article_ids:
+                # Only analyze articles that match the filter
+                filtered_articles = [a for a in articles if a.get('articleID') in filtered_article_ids]
+                # Run analysis on filtered articles
+                analyzed_articles = analyze_all(filtered_articles)
+                
+                # Update the main articles list with the analyzed articles
+                for analyzed_article in analyzed_articles:
+                    for i, article in enumerate(articles):
+                        if article.get('articleID') == analyzed_article.get('articleID'):
+                            articles[i] = analyzed_article
+                            break
+                
+                # Save back to file
+                save_json_file(articles, PROSPECTS_FILE)
+                # Show success message
+                st.success(f"Successfully analyzed {len(analyzed_articles)} filtered articles.")
+            else:
+                st.warning("No articles match your current filters.")
+            
+            # Clear cache to reload data
+            st.cache_data.clear()
+            # Rerun to update UI
+            st.rerun()
+
+with col2:
+    if st.button("Keep All", type="secondary", use_container_width=True):
+        with st.spinner("Keeping all articles..."):
+            # Keep all articles
+            kept_count = keep_all_articles(articles, KEPT_PROSPECTS_FILE)
+            # Show success message
+            st.success(f"Successfully kept {kept_count} articles.")
 
 # Display data
 if not filtered_df.empty:

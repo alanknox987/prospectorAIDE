@@ -7,7 +7,8 @@
         "date": "2025-05-02T15:52:42",
         "company": "",
         "location": "",
-        "confidence": 20
+        "confidence": 20,
+        "index": 0
     },
     {
         "articleID": "b1443ede-9fda-5233-8931-8709454a16b1",
@@ -17,7 +18,8 @@
         "date": "2025-05-02T15:52:42",
         "company": "",
         "location": "",
-        "confidence": 0
+        "confidence": 0,
+        "index": 1
     },
     {
         "articleID": "6b15990c-2658-528e-9a25-ae0e733f45c0",
@@ -27,7 +29,8 @@
         "date": "2025-05-02T15:52:42",
         "company": "",
         "location": "",
-        "confidence": 0
+        "confidence": 0,
+        "index": 2
     },
     {
         "articleID": "da6a3bbc-89d0-5c3d-8f15-b45c241fe497",
@@ -37,7 +40,8 @@
         "date": "2025-05-02T15:52:42",
         "company": "L'Oreal",
         "location": "",
-        "confidence": 0
+        "confidence": 0,
+        "index": 3
     },
     {
         "articleID": "cf119803-6598-5665-ad54-898e6585d5a1",
@@ -45,9 +49,21 @@
         "excerpt": "7-Eleven, Inc. is expanding its omnichannel collaboration with a legendary Gen X punk group.",
         "url": "https://chainstoreage.com/7-eleven-green-day-partner-pop-store-spotify-playlist",
         "date": "2025-05-02T15:52:42",
-        "company": "7-Eleven",
-        "location": "",
-        "confidence": 30
+        "company": "7-Eleven Inc.",
+        "location": "Phoenix, Arizona (for new store openings); Los Angeles (for the pop-up store); Hollywood Boulevard (for the pop-up store)",
+        "confidence": 20,
+        "index": 4,
+        "analysis": {
+            "analysis_confidence": 20,
+            "analysis_explanation": "The article primarily discusses a new Slurpee flavor collaboration between 7-Eleven and Green Day, with limited mention of store openings and remodeling in Phoenix and digital lottery access in select stores, which do not align with the criteria for multiple site projects.",
+            "analysis_company": "7-Eleven Inc.",
+            "analysis_location": "Phoenix, Arizona (for new store openings); Los Angeles (for the pop-up store); Hollywood Boulevard (for the pop-up store)",
+            "analysis_contact": "Marissa Jarratt, executive VP, chief marketing & sustainability officer at 7-Eleven Inc.",
+            "analysis_summary": "The article discusses a new Slurpee flavor collaboration between 7-Eleven and Green Day, with a special pop-up store in Los Angeles and new store openings in Phoenix. It also mentions the introduction of three new Green Day coffee varieties.",
+            "analysis_date": "2025-05-02 12:56:26",
+            "analysis_id": "0c65bd2f-0792-4e81-9caa-a41b7891313e"
+        },
+        "original_confidence": 30
     },
     {
         "articleID": "469edf2e-8991-5997-ad10-850e100232be",
@@ -57,7 +73,8 @@
         "date": "2025-05-02T15:52:42",
         "company": "Playa Bowls",
         "location": "North Carolina's Triad region",
-        "confidence": 40
+        "confidence": 40,
+        "index": 5
     },
     {
         "articleID": "2ad73123-15cd-5c84-b894-36203bc915f6",
@@ -67,7 +84,8 @@
         "date": "2025-05-02T15:52:42",
         "company": "Biggby Coffee",
         "location": "",
-        "confidence": 30
+        "confidence": 30,
+        "index": 6
     },
     {
         "articleID": "e732cb41-38bd-5ec7-8ffc-9b683d80e9d1",
@@ -77,7 +95,8 @@
         "date": "2025-05-02T15:52:42",
         "company": "Amazon",
         "location": "",
-        "confidence": 10
+        "confidence": 10,
+        "index": 7
     },
     {
         "articleID": "f5cea9a4-2857-5f2b-871c-457996fba570",
@@ -87,7 +106,8 @@
         "date": "2025-05-02T15:52:42",
         "company": "Amazon",
         "location": "",
-        "confidence": 10
+        "confidence": 10,
+        "index": 8
     },
     {
         "articleID": "4cd7c4c2-e5b1-5e90-9470-10156e545d37",
@@ -97,7 +117,8 @@
         "date": "2025-05-02T15:52:42",
         "company": "Albertsons, Instacart",
         "location": "",
-        "confidence": 20
+        "confidence": 20,
+        "index": 9
     },
     {
         "articleID": "f58f0db2-e135-5e64-9616-1ba470b62294",
@@ -107,7 +128,8 @@
         "date": "2025-05-01T16:12:32",
         "company": "Publix",
         "location": "",
-        "confidence": 10
+        "confidence": 10,
+        "index": 10
     },
     {
         "articleID": "6a5b24c5-93b8-5398-acde-fc608a35816b",
@@ -117,7 +139,8 @@
         "date": "2025-05-01T16:12:32",
         "company": "Tanger",
         "location": "",
-        "confidence": 10
+        "confidence": 10,
+        "index": 11
     },
     {
         "articleID": "e79ce922-e06e-5290-9c8c-ef40788b187c",
@@ -127,7 +150,8 @@
         "date": "2025-05-01T16:12:32",
         "company": "Instacart",
         "location": "",
-        "confidence": 20
+        "confidence": 20,
+        "index": 12
     },
     {
         "articleID": "6b87a217-80c4-59ac-b307-d38eeeb02d66",
@@ -137,7 +161,8 @@
         "date": "2025-05-01T16:12:32",
         "company": "Amazon",
         "location": "",
-        "confidence": 20
+        "confidence": 20,
+        "index": 13
     },
     {
         "articleID": "a055716e-4f10-5018-bdbe-162b6bd18c62",
@@ -147,7 +172,8 @@
         "date": "2025-05-01T16:12:32",
         "company": "L.L.Bean",
         "location": "",
-        "confidence": 0
+        "confidence": 0,
+        "index": 14
     },
     {
         "articleID": "84574e4c-505c-542f-8a4c-6dd746dade1b",
@@ -157,7 +183,8 @@
         "date": "2025-05-01T16:12:32",
         "company": "Sleep Number",
         "location": "",
-        "confidence": 0
+        "confidence": 0,
+        "index": 15
     },
     {
         "articleID": "57f52a09-ff9d-54f2-9aeb-1a2bcc09e2e1",
@@ -167,7 +194,8 @@
         "date": "2025-05-01T16:12:32",
         "company": "eBay",
         "location": "",
-        "confidence": 0
+        "confidence": 0,
+        "index": 16
     },
     {
         "articleID": "e37001da-2c8a-5ad8-a739-af5dc862d2fb",
@@ -177,7 +205,8 @@
         "date": "2025-05-01T16:12:32",
         "company": "Kohl\u00e2\u0080\u0099s",
         "location": "",
-        "confidence": 0
+        "confidence": 0,
+        "index": 17
     },
     {
         "articleID": "d6547da1-cfe0-5488-a9d3-d44b935f1cd4",
@@ -186,8 +215,20 @@
         "url": "https://chainstoreage.com/walmart-open-second-3d-printed-store-addition",
         "date": "2025-05-01T16:12:32",
         "company": "Walmart",
-        "location": "",
-        "confidence": 50
+        "location": "Huntsville, Alabama and Athens, Tennessee",
+        "confidence": 80,
+        "index": 18,
+        "analysis": {
+            "analysis_confidence": 80,
+            "analysis_explanation": "The article discusses Walmart's expansion of 3D printing efforts, including multiple store projects and renovations, which aligns well with the criteria for multiple site projects and large commercial projects.",
+            "analysis_company": "Walmart",
+            "analysis_location": "Huntsville, Alabama and Athens, Tennessee",
+            "analysis_contact": "Patrick Callahan, CEO of Alquist 3D",
+            "analysis_summary": "Walmart is expanding its 3D printing efforts with two store additions in Huntsville, Alabama, and Athens, Tennessee, as part of its online grocery pick-up and delivery program.",
+            "analysis_date": "2025-05-02 12:56:01",
+            "analysis_id": "2ef702c0-5276-4118-90d1-855ed96d50cb"
+        },
+        "original_confidence": 50
     },
     {
         "articleID": "ddeb55b9-3626-560d-a7c6-753a2f36c522",
@@ -197,7 +238,8 @@
         "date": "2025-05-01T16:12:32",
         "company": "Home Depot",
         "location": "",
-        "confidence": 20
+        "confidence": 20,
+        "index": 19
     },
     {
         "articleID": "28059a90-b93f-5951-9c22-c04332913d47",
@@ -207,6 +249,7 @@
         "date": "2025-04-30T20:06:56",
         "company": "Verizon",
         "location": "",
-        "confidence": 0
+        "confidence": 0,
+        "index": 20
     }
 ]
