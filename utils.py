@@ -396,7 +396,7 @@ Article content:
                     }
         
         # Add analysis date and ID
-        analysis_data['analysis_date'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        analysis_data['analysis_date'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         analysis_data['analysis_id'] = str(uuid.uuid4())
         
         # Log debug information
@@ -432,7 +432,7 @@ Article content:
         # Add error information to the article
         analyzed_article['analysis'] = {
             'error': str(e),
-            'analysis_date': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            'analysis_date': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             'analysis_id': str(uuid.uuid4())
         }
         

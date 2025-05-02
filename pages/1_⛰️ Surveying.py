@@ -35,7 +35,7 @@ with header:
     
     with col1:
         # App title
-        st.title("⛰️ Surveying")
+        st.title("⛰️ Surveying", anchor=False)
     
     with col2:
         # Company logo
