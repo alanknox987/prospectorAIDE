@@ -816,7 +816,7 @@ def scrape_articles_chainstoreage(start_url, cutoff_date):
     reached_cutoff = False
     
     while current_url and not reached_cutoff:
-        print(f"Scraping page {page_count}: {current_url}")
+#        print(f"Scraping page {page_count}: {current_url}")
         
         data = fetch_and_parse_chainestoreage(current_url, extract_data=True)
         if not data:
@@ -830,7 +830,7 @@ def scrape_articles_chainstoreage(start_url, cutoff_date):
             print(f"No articles found on page {page_count}")
             break
             
-        print(f"Found {len(articles)} articles on page {page_count}")
+#        print(f"Found {len(articles)} articles on page {page_count}")
         
         # Process articles on this page
         for article in articles:
@@ -899,21 +899,21 @@ def review_articles(articles):
     if total_articles <= max_batch_size:
         # If we have 10 or fewer articles, just use one batch
         num_batches = 1
+        batch_size = total_articles
+
     else:
-        # Start with minimum number of batches needed
-        num_batches = (total_articles + max_batch_size - 1) // max_batch_size
+        # Calculate minimum number of batches needed
+        num_batches = ((total_articles) // max_batch_size) + 1
         
-        # Check if we can redistribute to make batches more even
-        # Keep increasing num_batches until we get even distribution or hit the limit
-        while num_batches * (total_articles // num_batches) < total_articles and total_articles // num_batches > 1:
-            num_batches += 1
-            # Don't create more batches than articles
-            if num_batches >= total_articles:
-                num_batches = total_articles
-                break
-    
-    # Calculate actual batch size to use
-    batch_size = (total_articles + num_batches - 1) // num_batches
+        # Calculate batch size - we want to distribute articles evenly
+        batch_size = (total_articles // num_batches) + 1
+        
+        # If there's a remainder, add one more batch to make them more even
+        #if total_articles % num_batches != 0 and batch_size < max_batch_size:
+            # Only add a batch if it would make distribution more even
+        #    remainder = total_articles % num_batches
+        #    if remainder < num_batches // 2:  # If remainder is significant
+        #        num_batches += 1
     
     print(f"Processing {total_articles} articles in {num_batches} batches of approximately {batch_size} articles each")
     

@@ -315,5 +315,4 @@ if not filtered_df.empty:
             st.info("No articles found matching your filters.")
 
 # Footer
-st.divider()
 st.markdown("**Next Step:** After identifying potential articles, proceed to Mining stage.")

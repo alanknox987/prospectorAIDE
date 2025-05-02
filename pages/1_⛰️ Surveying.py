@@ -8,6 +8,23 @@ from datetime import datetime, timedelta
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from utils import load_json_file, save_json_file, find_articles_chainstoreage, review_articles, get_articles_df
 
+# Initialize session state variables
+if 'process_started' not in st.session_state:
+    st.session_state.process_started = False
+if 'process_complete' not in st.session_state:
+    st.session_state.process_complete = False
+if 'loaded_articles_count' not in st.session_state:
+    st.session_state.loaded_articles_count = 0
+
+# Define callback functions
+def start_processing():
+    st.session_state.process_started = True
+    
+def reset_processing():
+    st.session_state.process_started = False
+    st.session_state.process_complete = False
+    st.rerun()
+
 # Page configuration
 st.set_page_config(
     page_title="prospectorAIDE - Surveying",
@@ -50,7 +67,8 @@ START_URL = 'https://chainstoreage.com/news'
 
 # Calculate yesterday's date
 yesterday = datetime.now() - timedelta(days=1)
-default_cutoff_date = yesterday.date()  
+if 'default_cutoff_date' not in st.session_state:
+    st.default_cutoff_date = yesterday.date()  
 
 # Load data
 @st.cache_data(ttl=10)  # Cache with a short time-to-live to allow refreshing
@@ -77,44 +95,60 @@ if not articles:
 # Convert to DataFrame
 df = get_articles_df(articles)
 
-col1, col2 = st.columns(2)
+# Single column declaration
 col1, col2 = st.columns(2)
 
 with col2:
     st.markdown(" ")
 
 with col1:
-    # Date input field for CUTOFF_DATE
+    # Date input field for Cutoff Date
     selected_cutoff_date = st.date_input(
         "Cutoff Date (articles before this date will not be selected)",
-        value=default_cutoff_date
+        value=st.default_cutoff_date,
+        format="MM/DD/YYYY",
+        disabled=st.session_state.process_started  # Disable during processing
     )
     # Convert the selected date to datetime at midnight
     cutoff_datetime = datetime.combine(selected_cutoff_date, datetime.min.time())
 
     st.markdown(" ")
-    if st.button("Load/Review Prospects", type="primary", use_container_width=True):
-        # Use the cutoff_datetime defined above
-        progress_container = st.container()
-        
-        with progress_container:
-            with st.spinner("Loading prospects from ChainStoreAge..."):
-                # Run analysis on all articles
-                loaded_articles = find_articles_chainstoreage(START_URL, cutoff_datetime)
-            
-            with st.spinner("Reviewing new prospects..."):
-                reviewed_articles = review_articles(loaded_articles)
+    
+    # Only show the button if not currently processing
+    if not st.session_state.process_started:
+        st.button("Load/Review Prospects", type="primary", use_container_width=True, 
+                on_click=start_processing)  # Use callback instead of if condition
 
-            with st.spinner("Saving prospects to file..."):
-                # Save back to file
-                save_json_file(reviewed_articles, PROSPECTS_FILE)
-                # Show success message
-                st.success(f"Successfully loaded/reviewed {len(loaded_articles)} articles.")
-                # Clear cache to reload data
-                st.cache_data.clear()
-                
-        # Rerun to update UI
-        st.rerun()
+# Processing logic in a separate section
+if st.session_state.process_started and not st.session_state.process_complete:
+    # Create a container for progress indicators
+    progress_container = st.container()
+    
+    with progress_container:
+        with st.spinner("Loading prospects from ChainStoreAge..."):
+            loaded_articles = find_articles_chainstoreage(START_URL, cutoff_datetime)
+        
+        with st.spinner("Reviewing new prospects..."):
+            reviewed_articles = review_articles(loaded_articles)
+
+        with st.spinner("Saving prospects to file..."):
+            # Save back to file
+            save_json_file(reviewed_articles, PROSPECTS_FILE)
+            # Store count for success message
+            st.session_state.loaded_articles_count = len(loaded_articles)
+            # Mark as complete
+            st.session_state.process_complete = True
+            # Clear cache to reload data
+            st.cache_data.clear()
+    
+    # Force a rerun to refresh the page and show the success message
+    st.rerun()
+    
+# Show success message after processing is complete
+if st.session_state.process_complete:
+    #st.success(f"Successfully loaded/reviewed {st.session_state.loaded_articles_count} articles.")
+    # Add a button to reset the process state
+    reset_processing()
 
 # Filtering and sorting options
 st.subheader("Filter and Sort Prospects", anchor=False)
@@ -255,5 +289,4 @@ if not filtered_df.empty:
             st.info("No articles found matching your filters.")
 
 # Footer
-st.divider()
 st.markdown("**Next Step:** After loading prospects, proceed to the Prospecting step to analyze them.")

@@ -1,255 +1,412 @@
 [
     {
-        "articleID": "b19b6fe2-ae85-5bba-999f-acfaa40b81ec",
-        "title": "Survey: In-store retail ads help drive sales, engagement",
-        "excerpt": "Consumers have an overwhelming positive reception to in-store retail media.",
-        "url": "https://chainstoreage.com/survey-store-retail-ads-help-drive-sales-engagement",
-        "date": "2025-05-02T15:52:42",
+        "articleID": "e1732b4a-90a3-5338-b0ce-0d71266106fe",
+        "title": "Couche-Tard, 7-Eleven parent enter non-disclosure agreement",
+        "excerpt": "Two convenience powerhouses may be moving closer toward a merger.",
+        "url": "https://chainstoreage.com/couche-tard-7-eleven-parent-enter-non-disclosure-agreement",
+        "date": "2025-05-02T18:22:18",
         "company": "",
         "location": "",
-        "confidence": 20,
-        "index": 0
+        "confidence": 0
+    },
+    {
+        "articleID": "8f0e21be-cbf7-577c-910f-6270b9b6f383",
+        "title": "First Look: David Yurman opens new Miami store",
+        "excerpt": "A luxury jewelry brand has opened a new flagship in the heart of Miami\u00e2\u0080\u0099s Design District.",
+        "url": "https://chainstoreage.com/first-look-david-yurman-opens-new-miami-store",
+        "date": "2025-05-02T18:22:18",
+        "company": "David Yurman",
+        "location": "Miami",
+        "confidence": 50
+    },
+    {
+        "articleID": "294c3a31-8e14-530b-9965-728404966c9f",
+        "title": "Walmart debuts 'store of the future' in Texas; to open seven new stores",
+        "excerpt": "Walmart\u00e2\u0080\u0099s newest supercenter features numerous leading-edge design elements.",
+        "url": "https://chainstoreage.com/walmart-debuts-store-future-texas-open-seven-new-stores",
+        "date": "2025-05-02T18:22:18",
+        "company": "Walmart",
+        "location": "Texas",
+        "confidence": 80
+    },
+    {
+        "articleID": "b19b6fe2-ae85-5bba-999f-acfaa40b81ec",
+        "title": "Survey: In-store retail ads help drive sales, engagement",
+        "excerpt": "Consumers have an overwhelmingly positive reception to in-store retail media.",
+        "url": "https://chainstoreage.com/survey-store-retail-ads-help-drive-sales-engagement",
+        "date": "2025-05-02T18:22:18",
+        "company": "",
+        "location": "",
+        "confidence": 0
     },
     {
         "articleID": "b1443ede-9fda-5233-8931-8709454a16b1",
         "title": "Gartner: Here\u00e2\u0080\u0099s how supply chain execs will manage tariff costs",
         "excerpt": "Results of a new Gartner survey shed light on how supply chain leaders plan to mitigate the potential financial impact of tariffs.",
         "url": "https://chainstoreage.com/gartner-heres-how-supply-chain-execs-will-manage-tariff-costs",
-        "date": "2025-05-02T15:52:42",
+        "date": "2025-05-02T18:22:18",
         "company": "",
         "location": "",
-        "confidence": 0,
-        "index": 1
+        "confidence": 0
     },
     {
         "articleID": "6b15990c-2658-528e-9a25-ae0e733f45c0",
         "title": "Survey: Consumers want companies to support DEI, environmental causes",
         "excerpt": "While some retailers have rolled back diversity, equity and inclusion (DEI) initiatives, consumers are still looking for companies to support social causes and sustainability.",
         "url": "https://chainstoreage.com/survey-consumers-want-companies-support-dei-environmental-causes",
-        "date": "2025-05-02T15:52:42",
+        "date": "2025-05-02T18:22:18",
         "company": "",
         "location": "",
-        "confidence": 0,
-        "index": 2
+        "confidence": 0
     },
     {
         "articleID": "da6a3bbc-89d0-5c3d-8f15-b45c241fe497",
         "title": "L\u00e2\u0080\u0099Oreal deploys AI to personalize SkinCeuticals skincare brand site",
         "excerpt": "The world\u00e2\u0080\u0099s largest cosmetics company is significantly enhancing online marketing performance of one of its brands.",
         "url": "https://chainstoreage.com/loreal-deploys-ai-personalize-skinceuticals-skincare-brand-site",
-        "date": "2025-05-02T15:52:42",
-        "company": "L'Oreal",
+        "date": "2025-05-02T18:22:18",
+        "company": "L\u00e2\u0080\u0099Oreal",
         "location": "",
-        "confidence": 0,
-        "index": 3
+        "confidence": 0
     },
     {
         "articleID": "cf119803-6598-5665-ad54-898e6585d5a1",
         "title": "7-Eleven, Green Day partner on pop-up store, Spotify playlist",
         "excerpt": "7-Eleven, Inc. is expanding its omnichannel collaboration with a legendary Gen X punk group.",
         "url": "https://chainstoreage.com/7-eleven-green-day-partner-pop-store-spotify-playlist",
-        "date": "2025-05-02T15:52:42",
-        "company": "7-Eleven Inc.",
-        "location": "Phoenix, Arizona (for new store openings); Los Angeles (for the pop-up store); Hollywood Boulevard (for the pop-up store)",
-        "confidence": 20,
-        "index": 4,
-        "analysis": {
-            "analysis_confidence": 20,
-            "analysis_explanation": "The article primarily discusses a new Slurpee flavor collaboration between 7-Eleven and Green Day, with limited mention of store openings and remodeling in Phoenix and digital lottery access in select stores, which do not align with the criteria for multiple site projects.",
-            "analysis_company": "7-Eleven Inc.",
-            "analysis_location": "Phoenix, Arizona (for new store openings); Los Angeles (for the pop-up store); Hollywood Boulevard (for the pop-up store)",
-            "analysis_contact": "Marissa Jarratt, executive VP, chief marketing & sustainability officer at 7-Eleven Inc.",
-            "analysis_summary": "The article discusses a new Slurpee flavor collaboration between 7-Eleven and Green Day, with a special pop-up store in Los Angeles and new store openings in Phoenix. It also mentions the introduction of three new Green Day coffee varieties.",
-            "analysis_date": "2025-05-02 12:56:26",
-            "analysis_id": "0c65bd2f-0792-4e81-9caa-a41b7891313e"
-        },
-        "original_confidence": 30
+        "date": "2025-05-02T18:22:18",
+        "company": "7-Eleven",
+        "location": "",
+        "confidence": 20
     },
     {
         "articleID": "469edf2e-8991-5997-ad10-850e100232be",
         "title": "Playa Bowls targets North Carolina's Triad region for growth",
         "excerpt": "Playa Bowls is looking to grow its footprint in the Tar Heel State.",
         "url": "https://chainstoreage.com/playa-bowls-targets-north-carolinas-triad-region-growth",
-        "date": "2025-05-02T15:52:42",
+        "date": "2025-05-02T18:22:18",
         "company": "Playa Bowls",
         "location": "North Carolina's Triad region",
-        "confidence": 40,
-        "index": 5
+        "confidence": 30
     },
     {
         "articleID": "2ad73123-15cd-5c84-b894-36203bc915f6",
         "title": "Q&A: New Biggby Coffee president talks expansion plans",
         "excerpt": "Biggby Coffee has named a new president as it looks to expand its footprint.",
         "url": "https://chainstoreage.com/qa-new-biggby-coffee-president-talks-expansion-plans",
-        "date": "2025-05-02T15:52:42",
+        "date": "2025-05-02T18:22:18",
         "company": "Biggby Coffee",
         "location": "",
-        "confidence": 30,
-        "index": 6
+        "confidence": 80
     },
     {
         "articleID": "e732cb41-38bd-5ec7-8ffc-9b683d80e9d1",
         "title": "How to prepare for Prime Day in uncertain times",
         "excerpt": "Nobody knows exactly what the retail landscape will look like in July, but we know the annual Amazon Prime Day sales extravaganza is taking place.",
         "url": "https://chainstoreage.com/how-prepare-prime-day-uncertain-times",
-        "date": "2025-05-02T15:52:42",
+        "date": "2025-05-02T12:24:32",
         "company": "Amazon",
         "location": "",
-        "confidence": 10,
-        "index": 7
+        "confidence": 0
     },
     {
         "articleID": "f5cea9a4-2857-5f2b-871c-457996fba570",
         "title": "Amazon Q1 earnings easily beat Street; Q2 guidance disappoints",
         "excerpt": "Amazon beat Wall Street estimates for both its top and bottom line, but offered weaker than expected second-quarter guidance.",
         "url": "https://chainstoreage.com/amazon-q1-earnings-easily-beat-street-q2-guidance-disappoints",
-        "date": "2025-05-02T15:52:42",
+        "date": "2025-05-02T12:24:32",
         "company": "Amazon",
         "location": "",
-        "confidence": 10,
-        "index": 8
+        "confidence": 0
     },
     {
         "articleID": "4cd7c4c2-e5b1-5e90-9470-10156e545d37",
         "title": "Albertsons, Instacart provide online Mother\u00e2\u0080\u0099s Day hubs",
         "excerpt": "A major grocer and a leading grocery technology company are both offering online shoppers a dedicated destination to buy gifts for Mom.",
         "url": "https://chainstoreage.com/albertsons-instacart-provide-online-mothers-day-hubs",
-        "date": "2025-05-02T15:52:42",
-        "company": "Albertsons, Instacart",
+        "date": "2025-05-02T12:24:32",
+        "company": "Albertsons",
         "location": "",
-        "confidence": 20,
-        "index": 9
+        "confidence": 0
     },
     {
         "articleID": "f58f0db2-e135-5e64-9616-1ba470b62294",
         "title": "Publix Q1 sales increase, earnings fall; stock price rises",
         "excerpt": "Publix reported mixed results for its first quarter.",
         "url": "https://chainstoreage.com/publix-q1-sales-increase-earnings-fall-stock-price-rises",
-        "date": "2025-05-01T16:12:32",
+        "date": "2025-05-02T12:24:32",
         "company": "Publix",
         "location": "",
-        "confidence": 10,
-        "index": 10
+        "confidence": 0
     },
     {
         "articleID": "6a5b24c5-93b8-5398-acde-fc608a35816b",
         "title": "Leasing demand strong at Tanger centers in Q1",
         "excerpt": "Tanger has shared strong financial results and leasing metrics to start 2025.",
         "url": "https://chainstoreage.com/leasing-demand-strong-tanger-centers-q1",
-        "date": "2025-05-01T16:12:32",
+        "date": "2025-05-02T12:24:32",
         "company": "Tanger",
         "location": "",
-        "confidence": 10,
-        "index": 11
+        "confidence": 0
     },
     {
         "articleID": "e79ce922-e06e-5290-9c8c-ef40788b187c",
         "title": "Instacart acquires e-commerce technology firm Wynshop",
         "excerpt": "Instacart is strengthening its position as a provider of e-commerce solutions for grocers.",
         "url": "https://chainstoreage.com/instacart-acquires-e-commerce-technology-firm-wynshop",
-        "date": "2025-05-01T16:12:32",
+        "date": "2025-05-02T12:24:32",
         "company": "Instacart",
         "location": "",
-        "confidence": 20,
-        "index": 12
+        "confidence": 0
     },
     {
         "articleID": "6b87a217-80c4-59ac-b307-d38eeeb02d66",
         "title": "Amazon investing more than $4B in rural delivery",
         "excerpt": "Amazon is making a major commitment to giving customers in small towns access to fast delivery.",
         "url": "https://chainstoreage.com/amazon-investing-more-4b-rural-delivery",
-        "date": "2025-05-01T16:12:32",
+        "date": "2025-05-02T12:24:32",
         "company": "Amazon",
         "location": "",
-        "confidence": 20,
-        "index": 13
+        "confidence": 0
     },
     {
         "articleID": "a055716e-4f10-5018-bdbe-162b6bd18c62",
         "title": "L.L.Bean takes month-long break from social media \u00e2\u0080\u0094 here\u00e2\u0080\u0099s why",
         "excerpt": "For the fourth consecutive year, L.L.Bean is going \u00e2\u0080\u009coff the grid\u00e2\u0080\u009d during the month of May.",
         "url": "https://chainstoreage.com/llbean-takes-month-long-break-social-media-heres-why",
-        "date": "2025-05-01T16:12:32",
+        "date": "2025-05-02T12:24:32",
         "company": "L.L.Bean",
         "location": "",
-        "confidence": 0,
-        "index": 14
+        "confidence": 0
     },
     {
         "articleID": "84574e4c-505c-542f-8a4c-6dd746dade1b",
         "title": "Sleep Number expands C-suite roles",
         "excerpt": "A major mattress retailer is shaking up its leadership team under the direction of its new CEO.",
         "url": "https://chainstoreage.com/sleep-number-expands-c-suite-roles",
-        "date": "2025-05-01T16:12:32",
+        "date": "2025-05-02T12:24:32",
         "company": "Sleep Number",
         "location": "",
-        "confidence": 0,
-        "index": 15
+        "confidence": 0
     },
     {
         "articleID": "57f52a09-ff9d-54f2-9aeb-1a2bcc09e2e1",
         "title": "PayPal veteran tapped as eBay's next CFO",
         "excerpt": "eBay has announced a chief financial officer transition, while expanding the duties of two other C-suite members.",
         "url": "https://chainstoreage.com/paypal-veteran-tapped-ebays-next-cfo",
-        "date": "2025-05-01T16:12:32",
+        "date": "2025-05-02T12:24:32",
         "company": "eBay",
         "location": "",
-        "confidence": 0,
-        "index": 16
+        "confidence": 0
     },
     {
         "articleID": "e37001da-2c8a-5ad8-a739-af5dc862d2fb",
         "title": "Kohl\u00e2\u0080\u0099s fires new CEO 'for cause,' names interim chief",
         "excerpt": "Kohl\u00e2\u0080\u0099s Corp. has fired its chief executive four months after he stepped into the role.",
         "url": "https://chainstoreage.com/kohls-fires-new-ceo-cause-names-interim-chief",
-        "date": "2025-05-01T16:12:32",
+        "date": "2025-05-01T13:33:30",
         "company": "Kohl\u00e2\u0080\u0099s",
         "location": "",
-        "confidence": 0,
-        "index": 17
+        "confidence": 0
     },
     {
         "articleID": "d6547da1-cfe0-5488-a9d3-d44b935f1cd4",
         "title": "Walmart to open second 3D-printed store addition",
         "excerpt": "Walmart Inc. is following up on an historic construction milestone it achieved in fall 2024.",
         "url": "https://chainstoreage.com/walmart-open-second-3d-printed-store-addition",
-        "date": "2025-05-01T16:12:32",
+        "date": "2025-05-01T13:33:30",
         "company": "Walmart",
-        "location": "Huntsville, Alabama and Athens, Tennessee",
-        "confidence": 80,
-        "index": 18,
-        "analysis": {
-            "analysis_confidence": 80,
-            "analysis_explanation": "The article discusses Walmart's expansion of 3D printing efforts, including multiple store projects and renovations, which aligns well with the criteria for multiple site projects and large commercial projects.",
-            "analysis_company": "Walmart",
-            "analysis_location": "Huntsville, Alabama and Athens, Tennessee",
-            "analysis_contact": "Patrick Callahan, CEO of Alquist 3D",
-            "analysis_summary": "Walmart is expanding its 3D printing efforts with two store additions in Huntsville, Alabama, and Athens, Tennessee, as part of its online grocery pick-up and delivery program.",
-            "analysis_date": "2025-05-02 12:56:01",
-            "analysis_id": "2ef702c0-5276-4118-90d1-855ed96d50cb"
-        },
-        "original_confidence": 50
+        "location": "",
+        "confidence": 50
     },
     {
         "articleID": "ddeb55b9-3626-560d-a7c6-753a2f36c522",
         "title": "Home Depot expands selection of tax-free items for military shoppers",
         "excerpt": "The Home Depot is extending shopping benefits for military families and veterans.",
         "url": "https://chainstoreage.com/home-depot-expands-selection-tax-free-items-military-shoppers",
-        "date": "2025-05-01T16:12:32",
+        "date": "2025-05-01T13:33:30",
         "company": "Home Depot",
         "location": "",
-        "confidence": 20,
-        "index": 19
+        "confidence": 0
     },
     {
         "articleID": "28059a90-b93f-5951-9c22-c04332913d47",
         "title": "Verizon: Retail cyberattacks on the rise",
         "excerpt": "The retail industry is seeing an increase in its annual number cyberincidents as criminals are seeking a wider variety of data.",
         "url": "https://chainstoreage.com/verizon-retail-cyberattacks-rise",
-        "date": "2025-04-30T20:06:56",
+        "date": "2025-05-01T13:33:30",
         "company": "Verizon",
         "location": "",
-        "confidence": 0,
-        "index": 20
+        "confidence": 0
+    },
+    {
+        "articleID": "b579177e-c11a-5832-aa94-718e3696a674",
+        "title": "Beyond to open Overstock stores, test BuyBuy Baby location",
+        "excerpt": "Beyond Inc. is dipping its foot into brick-and-mortar retailer.",
+        "url": "https://chainstoreage.com/beyond-open-overstock-stores-test-buybuy-baby-location",
+        "date": "2025-05-01T13:33:30",
+        "company": "Beyond Inc.",
+        "location": "",
+        "confidence": 70
+    },
+    {
+        "articleID": "17471f70-0632-5fc4-801b-d411c67fdc70",
+        "title": "BuzzFeed integrates shoppable product recommendations into articles",
+        "excerpt": "A leading online news and entertainment platform is partnering to bring product recommendations directly into its articles.",
+        "url": "https://chainstoreage.com/buzzfeed-integrates-shoppable-product-recommendations-articles",
+        "date": "2025-05-01T13:33:30",
+        "company": "BuzzFeed",
+        "location": "",
+        "confidence": 0
+    },
+    {
+        "articleID": "6b872fd4-a179-5b13-ba98-c77168e1b6d6",
+        "title": "Survey: 76% of retail workers looking for career change",
+        "excerpt": "A majority of workers \u00e2\u0080\u0093 and especially those in retail \u00e2\u0080\u0093 are looking to make a career change.",
+        "url": "https://chainstoreage.com/survey-76-retail-workers-looking-career-change",
+        "date": "2025-05-01T13:33:30",
+        "company": "",
+        "location": "",
+        "confidence": 0
+    },
+    {
+        "articleID": "9422f273-28f4-569d-ab98-c913b31446b2",
+        "title": "Dick\u00e2\u0080\u0099s House of Sport to open at Cherry Hill Mall in 2026",
+        "excerpt": "Other new openings set to open this year are Coach, Dr. Martens, Pop Mart, and Offline by Aerie.",
+        "url": "https://chainstoreage.com/dicks-house-sport-open-cherry-hill-mall-2026",
+        "date": "2025-05-01T13:33:30",
+        "company": "Dick's House of Sport",
+        "location": "Cherry Hill Mall",
+        "confidence": 70
+    },
+    {
+        "articleID": "2e65c830-1e52-5b0b-b7f7-f900ca11a411",
+        "title": "Burlington on lease-buying spree \u00e2\u0080\u0094 to assume 45 Joann leases",
+        "excerpt": "Burlington Stores is capitalizing on the demise of bankrupt Joann to grow its footprint.",
+        "url": "https://chainstoreage.com/burlington-lease-buying-spree-assume-45-joann-leases",
+        "date": "2025-05-01T13:33:30",
+        "company": "Burlington Stores",
+        "location": "",
+        "confidence": 50
+    },
+    {
+        "articleID": "a1e783b4-c738-5a66-a609-a32ec2eab15f",
+        "title": "Chipotle celebrating Cinco de Mayo with Roblox game",
+        "excerpt": "Chipotle Mexican Grill is adding a new experience to an existing Roblox promotion in observance of a major Mexican holiday.",
+        "url": "https://chainstoreage.com/chipotle-celebrating-cinco-de-mayo-roblox-game",
+        "date": "2025-05-01T13:33:30",
+        "company": "Chipotle Mexican Grill",
+        "location": "",
+        "confidence": 0
+    },
+    {
+        "articleID": "ade3e37d-7fbe-5c0f-bb32-2131ca559573",
+        "title": "Amazon to boost last-mile capabilities with new delivery station",
+        "excerpt": "Amazon is expanding its supply chain footprint in Missouri.",
+        "url": "https://chainstoreage.com/amazon-boost-last-mile-capabilities-new-delivery-station",
+        "date": "2025-04-30T14:37:11",
+        "company": "Amazon",
+        "location": "Missouri",
+        "confidence": 30
+    },
+    {
+        "articleID": "4be96e16-b0ce-59ad-a1c9-2f2c8f390613",
+        "title": "Survey: Small businesses 'cautiously optimistic' about future",
+        "excerpt": "Financing and tariffs are top-of-mind for small business owners, despite remaining optimistic about growth.",
+        "url": "https://chainstoreage.com/survey-small-businesses-cautiously-optimistic-about-future",
+        "date": "2025-04-30T14:37:11",
+        "company": "",
+        "location": "",
+        "confidence": 0
+    },
+    {
+        "articleID": "ef74d804-f9f3-5fc3-97aa-4b03f7d9fd8f",
+        "title": "Chicken Salad Chick hits 300 locations as expansion continues",
+        "excerpt": "Chicken Salad Chick has reached a new store count milestone.",
+        "url": "https://chainstoreage.com/chicken-salad-chick-hits-300-locations-expansion-continues",
+        "date": "2025-04-30T14:37:11",
+        "company": "Chicken Salad Chick",
+        "location": "",
+        "confidence": 80
+    },
+    {
+        "articleID": "ff4f0ac6-8281-58ee-9b5d-148e93b5d739",
+        "title": "Shoppers to reduce spending on footwear \u00e2\u0080\u0094 including sneakers",
+        "excerpt": "More and more consumers are walking away from making a footwear purchase due to cost.",
+        "url": "https://chainstoreage.com/shoppers-reduce-spending-footwear-including-sneakers",
+        "date": "2025-04-30T14:37:11",
+        "company": "",
+        "location": "",
+        "confidence": 0
+    },
+    {
+        "articleID": "6a8cf4e2-5608-563c-a681-a3e64f497da2",
+        "title": "Sweetgreen names new COO",
+        "excerpt": "Sweetgreen has added a retail and restaurant industry veteran to its C-suite.",
+        "url": "https://chainstoreage.com/sweetgreen-names-new-coo",
+        "date": "2025-04-30T14:37:11",
+        "company": "Sweetgreen",
+        "location": "",
+        "confidence": 0
+    },
+    {
+        "articleID": "de0f4e2f-9799-547a-ac72-b1a7b996ebc3",
+        "title": "EXCLUSIVE Q&A: Amazon makes Prime Video shoppable",
+        "excerpt": "Amazon is expanding its \"Shop the Show\" livestream shopping functionality to its Prime Video streaming service.",
+        "url": "https://chainstoreage.com/exclusive-qa-amazon-makes-prime-video-shoppable",
+        "date": "2025-04-30T14:37:11",
+        "company": "Amazon",
+        "location": "",
+        "confidence": 0
+    },
+    {
+        "articleID": "22b85cc9-f409-5e6e-ae92-51715b59d953",
+        "title": "Circle K in third-party logistics agreement for Midwest distribution",
+        "excerpt": "Circle K is enhancing supply chain support for 1,600 stores in the Midwest.",
+        "url": "https://chainstoreage.com/circle-k-third-party-logistics-agreement-midwest-distribution",
+        "date": "2025-04-30T14:37:11",
+        "company": "Circle K",
+        "location": "Midwest",
+        "confidence": 80
+    },
+    {
+        "articleID": "0b44817d-23ac-50ad-ad2d-69628c95bee9",
+        "title": "EXCLUSIVE: Sephora touts cosmetics sustainability success",
+        "excerpt": "As Earth Month draws to a close, Sephora is reporting progress in\u00c2\u00a0its efforts to reduce waste associated with beauty products.",
+        "url": "https://chainstoreage.com/exclusive-sephora-touts-cosmetics-sustainability-success",
+        "date": "2025-04-30T14:37:11",
+        "company": "Sephora",
+        "location": "",
+        "confidence": 10
+    },
+    {
+        "articleID": "cd7a813d-2caa-5218-a8d9-b8cf0eae277c",
+        "title": "JCPenney teams with supermodel Ashley Graham on full-figure line",
+        "excerpt": "JCPenney is recruiting a fashion icon to create an exclusive namesake collection for full-figured women.",
+        "url": "https://chainstoreage.com/jcpenney-teams-supermodel-ashley-graham-full-figure-line",
+        "date": "2025-04-30T14:37:11",
+        "company": "JCPenney",
+        "location": "",
+        "confidence": 20
+    },
+    {
+        "articleID": "765cfb7b-a7fe-59ea-be08-f965f28dcea5",
+        "title": "Survey: Flowers, greeting cards, gift cards top Mother's Day shopping lists",
+        "excerpt": "With Mother\u00e2\u0080\u0099s Day around the corner, roughly two-thirds of Americans are expected to shop for the moms in their lives.",
+        "url": "https://chainstoreage.com/survey-flowers-greeting-cards-gift-cards-top-mothers-day-shopping-lists",
+        "date": "2025-04-30T14:37:11",
+        "company": "",
+        "location": "",
+        "confidence": 10
+    },
+    {
+        "articleID": "453d67a2-1547-5f8d-9cae-5fa68ecd7440",
+        "title": "Report: Private label interest continues to grow",
+        "excerpt": "Consumers still opt for name brands over private label products, but the gap is narrowing.",
+        "url": "https://chainstoreage.com/report-private-label-interest-continues-grow",
+        "date": "2025-04-29T17:49:39",
+        "company": "",
+        "location": "",
+        "confidence": 10
     }
 ]
