@@ -8,10 +8,38 @@ import uuid
 
 # Constants - modify these as needed
 START_URL = 'https://chainstoreage.com/news'
-CUTOFF_DATE = datetime(2025, 4, 27)  # Articles before this date will not be scraped
+CUTOFF_DATE = datetime(2025, 5, 1)  # Articles before this date will not be scraped
 OUTPUT_FILE = 'articles.json'
 
-def fetch_and_parse(url, parser='html.parser', extract_data=False):
+def parse_date(date_string):
+    """
+    Parse a date string into a datetime object.
+    """
+    if not date_string:
+        return None
+        
+    date_string = date_string.strip()
+    
+    try:
+        # Try ISO format (e.g., "2025-04-30T14:37:11")
+        return datetime.fromisoformat(date_string)
+    except ValueError:
+        try:
+            # Try with variations of ISO format
+            return datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%S")
+        except ValueError:
+            try:
+                # Try without seconds
+                return datetime.strptime(date_string, "%Y-%m-%dT%H:%M")
+            except ValueError:
+                try:
+                    # Try with just the date
+                    return datetime.strptime(date_string, "%Y-%m-%d")
+                except ValueError:
+                    print(f"Could not parse date: {date_string}")
+                    return None
+
+def fetch_and_parse_chainestoreage(url, parser='html.parser', extract_data=False):
     """
     Fetches content from a URL and parses it using BeautifulSoup.
     """
@@ -28,8 +56,8 @@ def fetch_and_parse(url, parser='html.parser', extract_data=False):
         if not extract_data:
             return soup
         
-        articles = extract_articles(soup)
-        pagination = extract_pagination(soup)
+        articles = extract_articles_chainstoreage(soup)
+        pagination = extract_pagination_chainstoreage(soup)
         
         return {
             'soup': soup,
@@ -41,7 +69,7 @@ def fetch_and_parse(url, parser='html.parser', extract_data=False):
         print(f"Error fetching or parsing URL: {e}")
         return None
 
-def extract_articles(soup):
+def extract_articles_chainstoreage(soup):
     """
     Extracts article information from the page.
     """
@@ -169,7 +197,7 @@ def extract_articles(soup):
     
     return articles
 
-def extract_pagination(soup):
+def extract_pagination_chainstoreage(soup):
     """
     Extracts pagination information from a BeautifulSoup object.
     """
@@ -223,35 +251,7 @@ def extract_pagination(soup):
     
     return pagination
 
-def parse_date(date_string):
-    """
-    Parse a date string into a datetime object.
-    """
-    if not date_string:
-        return None
-        
-    date_string = date_string.strip()
-    
-    try:
-        # Try ISO format (e.g., "2025-04-30T14:37:11")
-        return datetime.fromisoformat(date_string)
-    except ValueError:
-        try:
-            # Try with variations of ISO format
-            return datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%S")
-        except ValueError:
-            try:
-                # Try without seconds
-                return datetime.strptime(date_string, "%Y-%m-%dT%H:%M")
-            except ValueError:
-                try:
-                    # Try with just the date
-                    return datetime.strptime(date_string, "%Y-%m-%d")
-                except ValueError:
-                    print(f"Could not parse date: {date_string}")
-                    return None
-
-def scrape_articles_until_date(start_url, cutoff_date):
+def scrape_articles_chainstoreage(start_url, cutoff_date):
     """
     Scrapes articles until finding one published before the cutoff date.
     """
@@ -263,7 +263,7 @@ def scrape_articles_until_date(start_url, cutoff_date):
     while current_url and not reached_cutoff:
         print(f"Scraping page {page_count}: {current_url}")
         
-        data = fetch_and_parse(current_url, extract_data=True)
+        data = fetch_and_parse_chainestoreage(current_url, extract_data=True)
         if not data:
             print(f"Failed to fetch or parse page {page_count}")
             break
@@ -339,7 +339,7 @@ def main():
     print(f"Starting scrape from: {START_URL}")
     print(f"Using cutoff date: {CUTOFF_DATE}")
     
-    articles = scrape_articles_until_date(START_URL, CUTOFF_DATE)
+    articles = scrape_articles_chainstoreage(START_URL, CUTOFF_DATE)
     
     print(f"Total articles collected: {len(articles)}")
     

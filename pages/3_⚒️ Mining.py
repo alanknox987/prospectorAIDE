@@ -10,7 +10,7 @@ from utils import load_json_file, save_json_file, get_articles_df
 
 # Page configuration
 st.set_page_config(
-    page_title="Mining",
+    page_title="prospectorAIDE - Mining",
     page_icon="⚒️",
     layout="wide",
     initial_sidebar_state="expanded"
