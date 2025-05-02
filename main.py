@@ -31,18 +31,19 @@ with header:
 
 # Main page content
 st.markdown("""
-This application helps sales associates process articles through a 3-step workflow:
+This application helps sales associates process articles through a 4-step workflow:
 
-1. **Prospecting**: Review articles and analyze their potential
-2. **Mining**: Extract valuable information from selected articles
-3. **Collecting**: Finalize and organize collected article data
+1. **Surveying**: Load potential prospects from various sources
+2. **Prospecting**: Review prospects and analyze their potential
+3. **Mining**: Augment prospects with valuable information
+4. **Collecting**: Finalize and organize information for prospects to contact
 
 ### How to use this application:
 - Navigate between the workflow steps using the sidebar menu
-- Each step offers specific tools to help process the articles
-- Articles saved in one step will be available in the next step
+- Each step offers specific tools to help process the prospects
+- Prospects saved in one step will be available in the next step
 
-Click on **Prospecting** in the sidebar to begin the workflow.
+Click on **Surveying** in the sidebar to begin the workflow.
 """)
 
 # Display some stats if available
