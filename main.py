@@ -33,17 +33,17 @@ with header:
 st.markdown("""
 This application helps sales associates process articles through a 4-step workflow:
 
-1. <a href="Surveying" target="/Surveying">**Surveying**</a>: Load potential prospects from various sources
-2. <a href="Prospecting" target="_self">**Prospecting**</a>: Review prospects and analyze their potential
-3. <a href="Mining" target="_self">**Mining**</a>: Augment prospects with valuable information
-4. <a href="Collecting" target="_self">**Collecting**</a>: Finalize and organize information for prospects to contact
+1. <a href="/Surveying" target="_self">**Surveying**</a>: Load potential prospects from various sources
+2. <a href="/Prospecting" target="_self">**Prospecting**</a>: Review prospects and analyze their potential
+3. <a href="/Mining" target="_self">**Mining**</a>: Augment prospects with valuable information
+4. <a href="/Collecting" target="_self">**Collecting**</a>: Finalize and organize information for prospects to contact
 
 ### How to use this application:
 - Navigate between the workflow steps using the sidebar menu
 - Each step offers specific tools to help process the prospects
 - Prospects saved in one step will be available in the next step
 
-Click on <a href="Surveying" target="/Survey">**Surveying**</a> in the sidebar to begin the workflow.
+Click on <a href="/Surveying" target="_self">**Surveying**</a> in the sidebar to begin the workflow.
 """, unsafe_allow_html=True)
 
 # Display some stats if available
