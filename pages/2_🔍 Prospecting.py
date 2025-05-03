@@ -105,19 +105,19 @@ else:
         st.metric("Total Prospects", len(articles))
 
     with col2:
-        # Count articles with confidence > 40
-        confidence_40_count = sum(1 for a in articles if a.get('confidence', 0) >= 40 and a.get('confidence', 0) < 60)
-        st.metric("🟡 Confidence >40", f"{confidence_40_count}/{len(articles)}")
+        # Count articles with confidence > 80
+        confidence_80_count = sum(1 for a in articles if a.get('confidence', 0) >= 80)
+        st.metric("🟢 Confidence (80-100)", f"{confidence_80_count}/{len(articles)}")
 
     with col3:
         # Count articles with confidence > 60
         confidence_60_count = sum(1 for a in articles if a.get('confidence', 0) >= 60 and a.get('confidence', 0) < 80)
-        st.metric("🔵 Confidence >60", f"{confidence_60_count}/{len(articles)}")
+        st.metric("🔵 Confidence (60-79)", f"{confidence_60_count}/{len(articles)}")
 
     with col4:
-        # Count articles with confidence > 80
-        confidence_80_count = sum(1 for a in articles if a.get('confidence', 0) >= 80)
-        st.metric("🟢 Confidence >80", f"{confidence_80_count}/{len(articles)}")
+        # Count articles with confidence > 40
+        confidence_40_count = sum(1 for a in articles if a.get('confidence', 0) >= 40 and a.get('confidence', 0) < 60)
+        st.metric("🟡 Confidence (40-59)", f"{confidence_40_count}/{len(articles)}")
 
     with col5:
         # Count analyzed articles based on presence of 'analysis' key
