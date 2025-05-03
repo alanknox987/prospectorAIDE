@@ -95,14 +95,14 @@ articles = load_data()
 
 # Display message if no articles loaded
 if not articles:
-    st.warning(f"No articles found in {PROSPECTS_FILE}. Please check that the file exists and contains valid JSON data.")
+    st.warning(f"No prosepcts found to analyze found. Please Survey prospects first, or check that the file exists and contains valid data.")
 else:
     # Display statistics
-    st.subheader("Prospecting Statistics", anchor=False)
+    st.subheader("📊 Prospecting Statistics", anchor=False)
     col1, col2, col3, col4, col5 = st.columns(5)
 
     with col1:
-        st.metric("Total Articles", len(articles))
+        st.metric("Total Prospects", len(articles))
 
     with col2:
         # Count articles with confidence > 40
@@ -122,13 +122,13 @@ else:
     with col5:
         # Count analyzed articles based on presence of 'analysis' key
         analyzed_count = sum(1 for a in articles if 'analysis' in a)
-        st.metric("Analyzed Articles", f"{analyzed_count}/{len(articles)}")
+        st.metric("Analyzed Prospects", f"{analyzed_count}/{len(articles)}")
 
 # Convert to DataFrame
 df = get_articles_df(articles)
 
 # Filtering and sorting options
-st.subheader("Filter and Sort Articles", anchor=False)
+st.subheader("Filter and Sort Prospects", anchor=False)
 col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
 
 with col1:

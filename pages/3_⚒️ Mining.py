@@ -46,7 +46,7 @@ with header:
         if os.path.exists("assets/CtiPath-logo.png"):
             st.image("assets/CtiPath-logo.png", width=150)
 
-st.markdown("Extract valuable information from articles that passed the prospecting stage.")
+st.markdown("Extract valuable information for prospects that passed the prospecting stage.")
 
 # File paths
 KEPT_ARTICLES_FILE = "data/prospects-kept.json"
@@ -66,18 +66,18 @@ kept_articles = load_kept_data()
 
 # Check if there are any kept articles
 if not kept_articles:
-    st.warning("No articles have been kept yet. Please go to the Prospecting page and keep some articles first.")
+    st.warning("No prospects have been kept yet. Please go to the Prospecting page and keep some prospects first.")
     st.stop()
 
 # Convert to DataFrame
 df = get_articles_df(kept_articles)
 
 # Display statistics
-st.subheader("Mining Statistics")
+st.subheader("📊 Mining Statistics", anchor=False)
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.metric("Total Articles", len(kept_articles))
+    st.metric("Total Prospects", len(kept_articles))
 
 with col2:
     if 'confidence' in df.columns:
@@ -89,15 +89,15 @@ with col2:
 with col3:
     # Count analyzed articles based on presence of 'analysis' key instead of analyze_date
     analyzed_count = sum(1 for a in kept_articles if 'analysis' in a)
-    st.metric("Analyzed Articles", f"{analyzed_count}/{len(kept_articles)}")
+    st.metric("Analyzed Prospects", f"{analyzed_count}/{len(kept_articles)}")
 
 with col4:
     # Count mined articles based on presence of 'mined' key
     mined_count = sum(1 for a in kept_articles if 'mined' in a)
-    st.metric("Mined Articles", f"{mined_count}/{len(kept_articles)}")
+    st.metric("Mined Prospects", f"{mined_count}/{len(kept_articles)}")
 
 # Filtering and sorting options (matching Prospecting page)
-st.subheader("Filter and Sort Articles", anchor=False)
+st.subheader("Filter and Sort Prospects", anchor=False)
 col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
 
 with col1:
@@ -180,7 +180,7 @@ if not df.empty:
 
 # Display data in the same format as the Prospecting page
 if not filtered_df.empty:
-    st.markdown(f"<div class='article-header'><strong>Article List</strong> ({len(filtered_df)} matching)</div>", unsafe_allow_html=True)
+    st.markdown(f"<div class='article-header'><strong>Prospect List</strong> ({len(filtered_df)} matching)</div>", unsafe_allow_html=True)
 
     # Create a compact list of articles with minimal spacing
     for idx, row in filtered_df.iterrows():

@@ -90,7 +90,29 @@ articles = load_data()
 
 # Display message if no articles loaded
 if not articles:
-    st.warning(f"No articles found in {PROSPECTS_FILE}. Please check that the file exists and contains valid JSON data.")
+    st.warning(f"No prospects data found. Please Load/Review Prospects, or check that the file exists and contains valid data.")
+else:
+    # Display statistics
+    st.subheader("📊 Surveying Statistics", anchor=False)
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+        st.metric("Total Prospects", len(articles))
+
+    with col2:
+        # Count articles with confidence > 40
+        confidence_40_count = sum(1 for a in articles if a.get('confidence', 0) >= 40 and a.get('confidence', 0) < 60)
+        st.metric("🟡 Confidence >40", f"{confidence_40_count}/{len(articles)}")
+
+    with col3:
+        # Count articles with confidence > 60
+        confidence_60_count = sum(1 for a in articles if a.get('confidence', 0) >= 60 and a.get('confidence', 0) < 80)
+        st.metric("🔵 Confidence >60", f"{confidence_60_count}/{len(articles)}")
+
+    with col4:
+        # Count articles with confidence > 80
+        confidence_80_count = sum(1 for a in articles if a.get('confidence', 0) >= 80)
+        st.metric("🟢 Confidence >80", f"{confidence_80_count}/{len(articles)}")
 
 # Convert to DataFrame
 df = get_articles_df(articles)
