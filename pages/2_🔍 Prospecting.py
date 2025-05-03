@@ -98,7 +98,7 @@ if not articles:
     st.warning(f"No prosepcts found to analyze found. Please Survey prospects first, or check that the file exists and contains valid data.")
 else:
     # Display statistics
-    st.subheader("📊 Prospecting Statistics", anchor=False)
+    st.subheader("📊 Statistics", anchor=False)
     col1, col2, col3, col4, col5 = st.columns(5)
 
     with col1:

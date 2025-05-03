@@ -73,7 +73,7 @@ if not kept_articles:
 df = get_articles_df(kept_articles)
 
 # Display statistics
-st.subheader("📊 Mining Statistics", anchor=False)
+st.subheader("📊 Statistics", anchor=False)
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
