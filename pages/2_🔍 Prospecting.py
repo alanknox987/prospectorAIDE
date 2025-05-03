@@ -181,18 +181,20 @@ if not df.empty:
             filtered_df = filtered_df.sort_values('confidence', ascending=False)
         elif sort_selection == 'Confidence (lowest first)':
             filtered_df = filtered_df.sort_values('confidence', ascending=True)
-            
+
+filtered_count = len(filtered_df) if not filtered_df.empty else 0
+
 # Buttons for "Analyze All" and "Keep All"
 col1, col2 = st.columns(2)
 
 # Only show the buttons if not currently processing
 if not st.session_state.analyze_process_started and not st.session_state.keep_process_started:
     with col1:
-        st.button("Analyze All", type="primary", use_container_width=True, 
+        st.button(f"Analyze All ({filtered_count})", type="primary", use_container_width=True, 
                   on_click=start_analyze_processing)
 
     with col2:
-        st.button("Keep All", type="secondary", use_container_width=True, 
+        st.button(f"Keep All ({filtered_count})", type="secondary", use_container_width=True, 
                   on_click=start_keep_processing)
 
 # Processing logic for Analyze All
