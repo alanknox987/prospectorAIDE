@@ -17,7 +17,7 @@ st.set_page_config(
     page_title="prospectorAIDE - Mining",
     page_icon="⚒️",
     layout="wide",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
 )
 st.logo("assets/prospectorAIDE-logo.png", size='large')
 
