@@ -123,7 +123,7 @@ else:
         # Count analyzed articles based on presence of 'analysis' key
         analyzed_count = sum(1 for a in articles if 'analysis' in a)
         st.metric("Analyzed Prospects", f"{analyzed_count}/{len(articles)}")
-
+    
 # Convert to DataFrame
 df = get_articles_df(articles)
 

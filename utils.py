@@ -563,7 +563,32 @@ def call_bedrock_llm(
     except Exception as e:
         print(f"Error calling Bedrock LLM: {str(e)}")
         return f"{{\"error\": \"{str(e)}\"}}"
-    
+
+def remove_article(article_id, kept_file):
+    """
+    Remove an article from the kept file by its articleID.
+    Returns True if successful, False otherwise.
+    """
+    try:
+        # Load existing kept articles
+        kept_articles = load_json_file(kept_file)
+        
+        # Find the article to remove
+        original_length = len(kept_articles)
+        kept_articles = [article for article in kept_articles if article.get('articleID') != article_id]
+        
+        # Check if any article was removed
+        if len(kept_articles) < original_length:
+            # Save back to file
+            save_json_file(kept_articles, kept_file)
+            return True
+        else:
+            # No article was removed
+            return False
+    except Exception as e:
+        print(f"Error removing article: {e}")
+        return False
+
 def parse_date(date_string):
     """
     Parse a date string into a datetime object.

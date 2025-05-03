@@ -6,7 +6,7 @@ import datetime
 
 # Add parent directory to path to import utils
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from utils import load_json_file, save_json_file, get_articles_df
+from utils import load_json_file, save_json_file, get_articles_df, remove_article
 
 # Initialize session state variables
 if 'selected_mining_article_index' not in st.session_state:
@@ -188,7 +188,7 @@ if not filtered_df.empty:
         article = next((a for a in kept_articles if a.get('articleID') == article_id), None)
         
         if article:
-            # Use a 2-column layout: Article Content | Action Button
+            # Use a 2-column layout: Article Content | Action Buttons
             cols = st.columns([6, 1])
             
             with cols[0]:
@@ -273,11 +273,23 @@ if not filtered_df.empty:
                             st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Project Summary:</strong> {analysis['analysis_summary']}</div>", unsafe_allow_html=True)
 
             with cols[1]:
-                # Add mine button in the same column where Analyze/Keep buttons would be
+                # Mine button
                 if st.button("Mine", key=f"mine_{article_id}", type="primary", use_container_width=True):
                     st.session_state.selected_mining_article_index = idx
                     # Use rerun to update the UI with the selected article
                     st.rerun()
+                
+                # Remove button
+                if st.button("Remove", key=f"remove_{article_id}", type="secondary", use_container_width=True):
+                    # Call the remove_article function
+                    if remove_article(article_id, KEPT_ARTICLES_FILE):
+                        st.success(f"Article '{article['title']}' removed successfully.")
+                        # Clear the cache to force data reload
+                        st.cache_data.clear()
+                        # Reload the page to reflect the changes
+                        st.rerun()
+                    else:
+                        st.error("Failed to remove the article.")
 
             # Much thinner separator line using the CSS class
             st.markdown("<hr class='article-separator'>", unsafe_allow_html=True)
@@ -285,102 +297,6 @@ if not filtered_df.empty:
             st.info("No articles found matching your filters.")
 else:
     st.info("No articles found matching your filters.")
-
-# Mining section - displays if an article is selected
-if st.session_state.selected_mining_article_index is not None and not filtered_df.empty:
-    st.header("Article Mining")
-    
-    # Get the selected article
-    try:
-        selected_idx = st.session_state.selected_mining_article_index
-        article_id = filtered_df.iloc[selected_idx]['articleID'] if 'articleID' in filtered_df.columns else filtered_df.index[selected_idx]
-        selected_article = next((a for a in kept_articles if a.get('articleID') == article_id), None)
-        
-        if selected_article:
-            # Display article details
-            with st.expander("Article Details", expanded=True):
-                col1, col2 = st.columns([3, 1])
-                
-                with col1:
-                    st.markdown(f"### {selected_article.get('title', 'Untitled')}")
-                    st.markdown(f"**Excerpt:** {selected_article.get('excerpt', 'No excerpt available')}")
-                    
-                    if 'company' in selected_article and selected_article['company']:
-                        st.markdown(f"**Company:** {selected_article['company']}")
-                    
-                    if 'location' in selected_article and selected_article['location']:
-                        st.markdown(f"**Location:** {selected_article['location']}")
-                    
-                    if 'date' in selected_article:
-                        formatted_date = selected_article['date'].split('T')[0] if 'T' in selected_article['date'] else selected_article['date']
-                        st.markdown(f"**Date:** {formatted_date}")
-                    
-                    if 'url' in selected_article:
-                        st.markdown(f"**URL:** [{selected_article['url']}]({selected_article['url']})")
-                
-                with col2:
-                    if 'confidence' in selected_article:
-                        st.metric("Confidence", f"{selected_article['confidence']}%")
-                    
-                    if 'analyze_date' in selected_article:
-                        st.markdown(f"**Last Analyzed:** {selected_article['analyze_date']}")
-            
-            # Mining tools
-            st.subheader("Mining Tools")
-            
-            # Mining form
-            with st.form("mining_form"):
-                st.markdown("### Extract Key Information")
-                
-                col1, col2 = st.columns(2)
-                
-                with col1:
-                    key_entities = st.text_area("Key Entities", 
-                                              help="Enter entities mentioned in the article (companies, people, products)")
-                    
-                    topics = st.text_area("Topics", 
-                                        help="Enter main topics discussed in the article")
-                
-                with col2:
-                    sentiment = st.radio("Sentiment", 
-                                       options=["Positive", "Neutral", "Negative", "Mixed"],
-                                       index=1,
-                                       help="Select the overall sentiment of the article")
-                    
-                    relevance = st.slider("Relevance Score", 
-                                        min_value=0, 
-                                        max_value=10, 
-                                        value=5,
-                                        help="Rate how relevant this article is to your needs")
-                    
-                    potential_value = st.slider("Potential Value", 
-                                              min_value=0, 
-                                              max_value=10, 
-                                              value=5,
-                                              help="Rate the potential value of this article")
-                
-                # Add notes
-                notes = st.text_area("Notes", 
-                                   help="Add any additional notes or observations about this article")
-                
-                # Submit button
-                submitted = st.form_submit_button("Save Mining Results", type="primary")
-                
-                if submitted:
-                    # In a real implementation, you would update the article with the mining results
-                    st.success("Mining results saved successfully!")
-                    
-                    # Simulate updating the article with mining data
-                    # In a real implementation, you would update the JSON file
-                    st.info("In a real implementation, this would update the article with your mining results and add a 'mined' key to track mining status.")
-                    
-            # Clear selection button
-            if st.button("Back to Article List"):
-                st.session_state.selected_mining_article_index = None
-                st.rerun()
-    except (IndexError, KeyError):
-        st.error("Selected article not found. Please select another article.")
-        st.session_state.selected_mining_article_index = None
 
 # Footer
 st.markdown("**Next Step:** After mining valuable information, proceed to the Collecting stage.")
