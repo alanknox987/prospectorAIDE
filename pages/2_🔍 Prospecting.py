@@ -96,6 +96,33 @@ articles = load_data()
 # Display message if no articles loaded
 if not articles:
     st.warning(f"No articles found in {PROSPECTS_FILE}. Please check that the file exists and contains valid JSON data.")
+else:
+    # Display statistics
+    st.subheader("Prospecting Statistics", anchor=False)
+    col1, col2, col3, col4, col5 = st.columns(5)
+
+    with col1:
+        st.metric("Total Articles", len(articles))
+
+    with col2:
+        # Count articles with confidence > 40
+        confidence_40_count = sum(1 for a in articles if a.get('confidence', 0) >= 40 and a.get('confidence', 0) < 60)
+        st.metric("🟡 Confidence >40", f"{confidence_40_count}/{len(articles)}")
+
+    with col3:
+        # Count articles with confidence > 60
+        confidence_60_count = sum(1 for a in articles if a.get('confidence', 0) >= 60 and a.get('confidence', 0) < 80)
+        st.metric("🔵 Confidence >60", f"{confidence_60_count}/{len(articles)}")
+
+    with col4:
+        # Count articles with confidence > 80
+        confidence_80_count = sum(1 for a in articles if a.get('confidence', 0) >= 80)
+        st.metric("🟢 Confidence >80", f"{confidence_80_count}/{len(articles)}")
+
+    with col5:
+        # Count analyzed articles based on presence of 'analysis' key
+        analyzed_count = sum(1 for a in articles if 'analysis' in a)
+        st.metric("Analyzed Articles", f"{analyzed_count}/{len(articles)}")
 
 # Convert to DataFrame
 df = get_articles_df(articles)
@@ -376,7 +403,11 @@ if not filtered_df.empty:
                 # Stack buttons vertically to make them wider
                 # Only show buttons if not in the middle of a process
                 if not st.session_state.analyze_process_started and not st.session_state.keep_process_started:
-                    analyze_button = st.button("Analyze", key=f"analyze_{article_id}", type="primary", use_container_width=True)
+                    if 'analysis' in article:
+                        analyze_button_text = "Re-Analyze"
+                    else:
+                        analyze_button_text = "Analyze"
+                    analyze_button = st.button(analyze_button_text, key=f"analyze_{article_id}", type="primary", use_container_width=True)
                     keep_button = st.button("Keep", key=f"keep_{article_id}", type="secondary", use_container_width=True)
                     
                     # Handle button clicks
