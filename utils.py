@@ -17,7 +17,7 @@ def load_json_file(file_path):
         with open(file_path, 'r', encoding='utf-8') as file:
             data = json.load(file)
             # If loading from the main data file, make sure we have indexes
-            if file_path.endswith('article-confidence.json'):
+            if file_path.endswith('pospects-new.json'):
                 # Make sure each article has an index for proper dataframe creation
                 for i, article in enumerate(data):
                     article['index_pos'] = i
@@ -346,9 +346,9 @@ def analyze_article(article):
 * Commercial or store remodeling projects for multiple sites, stores, locations, etc
 * Projects involving multiple sites, stores, locations, etc should score higher than single location projects
 
-Create a confidence score of 0-100 based on how well the information in the article matches the criteria. [analysis_confidence]
+Create a criteria compatiblity score of 0-100 based on how well the information in the article matches the criteria. [analysis_compatibility]
 
-Create a 1 sentence explanation of your confidence score based on the criteria. [analysis_explanation]
+Create a 1 sentence explanation of your compatibility score based on the criteria. [analysis_explanation]
 Determine which company the article is about, if applicable. [analysis_company]
 Determine the location or locations the article is about, if applicable. [analysis_location]
 Determine any company contacts mentioned by the article, if applicable. [analysis_contact]
@@ -398,7 +398,7 @@ Article content:
         # Add analysis date and ID
         analysis_data['analysis_date'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         analysis_data['analysis_id'] = str(uuid.uuid4())
-        analysis_data['original_confidence'] = article['confidence']
+        analysis_data['original_compatibility'] = article['compatibility']
         
         # Log debug information
         log_debug_info("Parsed analysis data", analysis_data)
@@ -406,15 +406,15 @@ Article content:
         # Add analysis data to article
         analyzed_article['analysis'] = analysis_data
         
-        # Update the confidence score based on the analysis
-        if 'analysis_confidence' in analysis_data:
+        # Update the compatibility score based on the analysis
+        if 'analysis_compatibility' in analysis_data:
             try:
-                confidence_value = int(analysis_data['analysis_confidence'])
-                analyzed_article['confidence'] = confidence_value
+                compatibility_value = int(analysis_data['analysis_compatibility'])
+                analyzed_article['compatibility'] = compatibility_value
             except (ValueError, TypeError):
-                # If conversion fails, keep the existing confidence or set to 0
-                if 'confidence' not in analyzed_article:
-                    analyzed_article['confidence'] = 0
+                # If conversion fails, keep the existing compatibility or set to 0
+                if 'compatibility' not in analyzed_article:
+                    analyzed_article['compatibility'] = 0
         
         # Update company and location if available from analysis
         if 'analysis_company' in analysis_data and analysis_data['analysis_company']:
@@ -468,11 +468,11 @@ def get_articles_df(articles):
     if 'analyze_date' in df.columns:
         df['analyze_date'] = pd.to_datetime(df['analyze_date'], errors='coerce')
     
-    # Ensure confidence is numeric
-    if 'confidence' in df.columns:
-        df['confidence'] = pd.to_numeric(df['confidence'], errors='coerce')
+    # Ensure compatibility is numeric
+    if 'compatibility' in df.columns:
+        df['compatibility'] = pd.to_numeric(df['compatibility'], errors='coerce')
         # Fill NaN values with 0
-        df['confidence'] = df['confidence'].fillna(0)
+        df['compatibility'] = df['compatibility'].fillna(0)
     
     return df
 
@@ -960,11 +960,11 @@ def review_articles(articles):
 * Commercial or store remodeling projects for multiple sites, stores, locations, etc
 * Projects involving multiple sites, stores, locations, etc should score higher than single location projects
 
-Create a "confidence" score of 0 (does not match criteria) to 100 (matches criteria well) based on how well the information in the article matches the criteria. [analysis_confidence]
+Create a "compatibility" score of 0 (does not match criteria) to 100 (matches criteria well) based on how well the information in the article matches the criteria. [compatibility]
 
 For each article, determine the fields "company" and "location" if available in the title and/or excerpt. If not available, leave those fields blank.
 
-Output ONLY a valid JSON array containing objects with these fields for each article: articleID, title, excerpt, company, location, url, date, confidence.
+Output ONLY a valid JSON array containing objects with these fields for each article: articleID, title, excerpt, company, location, url, date, compatibility.
 
 IMPORTANT: Your response MUST be wrapped in square brackets as a valid JSON array like this:
 [
@@ -976,7 +976,7 @@ IMPORTANT: Your response MUST be wrapped in square brackets as a valid JSON arra
     "date": "value",
     "company": "value",
     "location": "value",
-    "confidence": number
+    "compatibility": number
   }},
   ...more objects...
 ]
@@ -1026,8 +1026,8 @@ Article json information:
                 # Fall back to default handling as in your original code
                 for article in batch:
                     modified_article = article.copy()
-                    if 'confidence' not in modified_article:
-                        modified_article['confidence'] = 0
+                    if 'compatibility' not in modified_article:
+                        modified_article['compatibility'] = 0
                     if 'company' not in modified_article:
                         modified_article['company'] = ""
                     if 'location' not in modified_article:

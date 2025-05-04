@@ -105,19 +105,19 @@ else:
         st.metric("Total Prospects", len(articles))
 
     with col2:
-        # Count articles with confidence > 80
-        confidence_80_count = sum(1 for a in articles if a.get('confidence', 0) >= 80)
-        st.metric("🟢 Confidence (80-100)", f"{confidence_80_count}/{len(articles)}")
+        # Count articles with compatibility > 80
+        compatibility_80_count = sum(1 for a in articles if a.get('compatibility', 0) >= 80)
+        st.metric("🟢 Compatibility (80-100%)", f"{compatibility_80_count}/{len(articles)}")
 
     with col3:
-        # Count articles with confidence > 60
-        confidence_60_count = sum(1 for a in articles if a.get('confidence', 0) >= 60 and a.get('confidence', 0) < 80)
-        st.metric("🔵 Confidence (60-79)", f"{confidence_60_count}/{len(articles)}")
+        # Count articles with compatibility > 60
+        compatibility_60_count = sum(1 for a in articles if a.get('compatibility', 0) >= 60 and a.get('compatibility', 0) < 80)
+        st.metric("🔵 Compatibility (60-79%)", f"{compatibility_60_count}/{len(articles)}")
 
     with col4:
-        # Count articles with confidence > 40
-        confidence_40_count = sum(1 for a in articles if a.get('confidence', 0) >= 40 and a.get('confidence', 0) < 60)
-        st.metric("🟡 Confidence (40-59)", f"{confidence_40_count}/{len(articles)}")
+        # Count articles with compatibility > 40
+        compatibility_40_count = sum(1 for a in articles if a.get('compatibility', 0) >= 40 and a.get('compatibility', 0) < 60)
+        st.metric("🟡 Compatibility (40-59%)", f"{compatibility_40_count}/{len(articles)}")
 
     with col5:
         # Count analyzed articles based on presence of 'analysis' key
@@ -132,8 +132,8 @@ st.subheader("Filter and Sort Prospects", anchor=False)
 col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
 
 with col1:
-    # Filter by confidence score (moved to first position)
-    min_confidence = st.slider("Minimum Confidence", 0, 100, 0)
+    # Filter by compatibility score (moved to first position)
+    min_compatibility = st.slider("Minimum compatibility", 0, 100, 0)
 
 with col2:
     # Filter by date (moved to second position)
@@ -159,7 +159,7 @@ with col4:
 with col5:
     # Sorting options (now in the fifth column)
     sort_options = ['Date (newest first)', 'Date (oldest first)', 
-                   'Confidence (highest first)', 'Confidence (lowest first)']
+                   'compatibility (highest first)', 'compatibility (lowest first)']
     sort_selection = st.selectbox("Sort By", sort_options)
 
 # Apply filters
@@ -167,9 +167,9 @@ filtered_df = pd.DataFrame()  # Initialize with an empty DataFrame
 if not df.empty:
     filtered_df = df.copy()
     
-    # Confidence filter
-    if 'confidence' in df.columns:
-        filtered_df = filtered_df[filtered_df['confidence'] >= min_confidence]
+    # compatibility filter
+    if 'compatibility' in df.columns:
+        filtered_df = filtered_df[filtered_df['compatibility'] >= min_compatibility]
     
     # Date filter
     if date_filter != "All" and 'date' in df.columns:
@@ -199,15 +199,15 @@ if not df.empty:
                 'analysis' not in next((a for a in articles if a.get('articleID') == row.get('articleID')), {}), axis=1)]
     
     # Apply sorting
-    if 'date' in filtered_df.columns and 'confidence' in filtered_df.columns:
+    if 'date' in filtered_df.columns and 'compatibility' in filtered_df.columns:
         if sort_selection == 'Date (newest first)':
             filtered_df = filtered_df.sort_values('date', ascending=False)
         elif sort_selection == 'Date (oldest first)':
             filtered_df = filtered_df.sort_values('date', ascending=True)
-        elif sort_selection == 'Confidence (highest first)':
-            filtered_df = filtered_df.sort_values('confidence', ascending=False)
-        elif sort_selection == 'Confidence (lowest first)':
-            filtered_df = filtered_df.sort_values('confidence', ascending=True)
+        elif sort_selection == 'compatibility (highest first)':
+            filtered_df = filtered_df.sort_values('compatibility', ascending=False)
+        elif sort_selection == 'compatibility (lowest first)':
+            filtered_df = filtered_df.sort_values('compatibility', ascending=True)
 
 filtered_count = len(filtered_df) if not filtered_df.empty else 0
 
@@ -320,29 +320,29 @@ if not filtered_df.empty:
             
             with cols[0]:
                 # Title
-                if article['confidence'] >= 80:
-                    confidence_emoji = "🟢"
-                elif article['confidence'] >= 60:
-                    confidence_emoji = "🔵"
-                elif article['confidence'] >= 40:
-                    confidence_emoji = "🟡"
-                elif article['confidence'] >= 20:
-                    confidence_emoji = "🔴"
+                if article['compatibility'] >= 80:
+                    compatibility_emoji = "🟢"
+                elif article['compatibility'] >= 60:
+                    compatibility_emoji = "🔵"
+                elif article['compatibility'] >= 40:
+                    compatibility_emoji = "🟡"
+                elif article['compatibility'] >= 20:
+                    compatibility_emoji = "🔴"
                 else:
-                    confidence_emoji = "⚫"
+                    compatibility_emoji = "⚫"
 
-                st.markdown(f"<div class='article-title'><strong>{confidence_emoji} {article['title']}</strong></div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='article-title'><strong>{compatibility_emoji} {article['title']}</strong></div>", unsafe_allow_html=True)
                 
                 # Excerpt
                 if 'excerpt' in article:
                     st.markdown(f"<div class='article-excerpt'>{article['excerpt']}</div>", unsafe_allow_html=True)
                 
-                # Metadata in specified order: confidence, date, company, location
+                # Metadata in specified order: compatibility, date, company, location
                 metadata_parts = []
                 
-                # Confidence (bold)
-                if 'confidence' in article:
-                    metadata_parts.append(f"<strong>Confidence: {article['confidence']}</strong>")
+                # compatibility (bold)
+                if 'compatibility' in article:
+                    metadata_parts.append(f"<strong>Compatibility: {article['compatibility']}%</strong>")
                 
                 # Date
                 if 'date' in article:
@@ -378,11 +378,11 @@ if not filtered_df.empty:
                     
                     with st.expander(expander_title):
                         # Display analysis information in a clean format
-                        if 'analysis_confidence' in analysis:
-                            st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Confidence:</strong> {analysis['analysis_confidence']}</div>", unsafe_allow_html=True)
+                        if 'analysis_compatibility' in analysis:
+                            st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Compatibility:</strong> {analysis['analysis_compatibility']}%</div>", unsafe_allow_html=True)
 
-                        if 'original_confidence' in analysis:
-                            st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Original Confidence:</strong> {analysis['original_confidence']}</div>", unsafe_allow_html=True)                        
+                        if 'original_compatibility' in analysis:
+                            st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Original Compatibility:</strong> {analysis['original_compatibility']}%</div>", unsafe_allow_html=True)                        
 
                         if 'analysis_explanation' in analysis:
                             st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Explanation:</strong> {analysis['analysis_explanation']}</div>", unsafe_allow_html=True)

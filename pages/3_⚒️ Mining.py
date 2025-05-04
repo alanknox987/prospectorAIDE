@@ -80,11 +80,11 @@ with col1:
     st.metric("Total Prospects", len(kept_articles))
 
 with col2:
-    if 'confidence' in df.columns:
-        avg_confidence = df['confidence'].mean()
-        st.metric("Average Confidence", f"{avg_confidence:.0f}%")
+    if 'compatibility' in df.columns:
+        avg_compatibility = df['compatibility'].mean()
+        st.metric("Average Compatibility", f"{avg_compatibility:.0f}%")
     else:
-        st.metric("Average Confidence", "N/A")
+        st.metric("Average Compatibility", "N/A")
 
 with col3:
     # Count analyzed articles based on presence of 'analysis' key instead of analyze_date
@@ -101,8 +101,8 @@ st.subheader("Filter and Sort Prospects", anchor=False)
 col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
 
 with col1:
-    # Filter by confidence score
-    min_confidence = st.slider("Minimum Confidence", 0, 100, 0)
+    # Filter by compatibility score
+    min_compatibility = st.slider("Minimum Compatibility", 0, 100, 0)
 
 with col2:
     # Filter by date
@@ -128,7 +128,7 @@ with col4:
 with col5:
     # Sorting options
     sort_options = ['Date (newest first)', 'Date (oldest first)', 
-                   'Confidence (highest first)', 'Confidence (lowest first)']
+                   'Compatibility (highest first)', 'Compatibility (lowest first)']
     sort_selection = st.selectbox("Sort By", sort_options)
 
 # Apply filters
@@ -136,9 +136,9 @@ filtered_df = pd.DataFrame()  # Initialize with an empty DataFrame
 if not df.empty:
     filtered_df = df.copy()
     
-    # Confidence filter
-    if 'confidence' in df.columns:
-        filtered_df = filtered_df[filtered_df['confidence'] >= min_confidence]
+    # compatibility filter
+    if 'compatibility' in df.columns:
+        filtered_df = filtered_df[filtered_df['compatibility'] >= min_compatibility]
     
     # Date filter
     if date_filter != "All" and 'date' in df.columns:
@@ -168,15 +168,15 @@ if not df.empty:
                 'analysis' not in next((a for a in kept_articles if a.get('articleID') == row.get('articleID')), {}), axis=1)]
     
     # Apply sorting
-    if 'date' in filtered_df.columns and 'confidence' in filtered_df.columns:
+    if 'date' in filtered_df.columns and 'compatibility' in filtered_df.columns:
         if sort_selection == 'Date (newest first)':
             filtered_df = filtered_df.sort_values('date', ascending=False)
         elif sort_selection == 'Date (oldest first)':
             filtered_df = filtered_df.sort_values('date', ascending=True)
-        elif sort_selection == 'Confidence (highest first)':
-            filtered_df = filtered_df.sort_values('confidence', ascending=False)
-        elif sort_selection == 'Confidence (lowest first)':
-            filtered_df = filtered_df.sort_values('confidence', ascending=True)
+        elif sort_selection == 'Compatibility (highest first)':
+            filtered_df = filtered_df.sort_values('compatibility', ascending=False)
+        elif sort_selection == 'Compatibility (lowest first)':
+            filtered_df = filtered_df.sort_values('compatibility', ascending=True)
 
 # Display data in the same format as the Prospecting page
 if not filtered_df.empty:
@@ -192,30 +192,30 @@ if not filtered_df.empty:
             cols = st.columns([6, 1])
             
             with cols[0]:
-                # Title with confidence emoji
-                if article['confidence'] >= 80:
-                    confidence_emoji = "🟢"
-                elif article['confidence'] >= 60:
-                    confidence_emoji = "🔵"
-                elif article['confidence'] >= 40:
-                    confidence_emoji = "🟡"
-                elif article['confidence'] >= 20:
-                    confidence_emoji = "🔴"
+                # Title with compatibility emoji
+                if article['compatibility'] >= 80:
+                    compatibility_emoji = "🟢"
+                elif article['compatibility'] >= 60:
+                    compatibility_emoji = "🔵"
+                elif article['compatibility'] >= 40:
+                    compatibility_emoji = "🟡"
+                elif article['compatibility'] >= 20:
+                    compatibility_emoji = "🔴"
                 else:
-                    confidence_emoji = "⚫"
+                    compatibility_emoji = "⚫"
 
-                st.markdown(f"<div class='article-title'><strong>{confidence_emoji} {article['title']}</strong></div>", unsafe_allow_html=True)
+                st.markdown(f"<div class='article-title'><strong>{compatibility_emoji} {article['title']}</strong></div>", unsafe_allow_html=True)
                 
                 # Excerpt
                 if 'excerpt' in article:
                     st.markdown(f"<div class='article-excerpt'>{article['excerpt']}</div>", unsafe_allow_html=True)
                 
-                # Metadata in specified order: confidence, date, company, location
+                # Metadata in specified order: compatibility, date, company, location
                 metadata_parts = []
                 
-                # Confidence (bold)
-                if 'confidence' in article:
-                    metadata_parts.append(f"<strong>Confidence: {article['confidence']}</strong>")
+                # compatibility (bold)
+                if 'compatibility' in article:
+                    metadata_parts.append(f"<strong>Compatibility: {article['compatibility']}%</strong>")
                 
                 # Date
                 if 'date' in article:
@@ -251,11 +251,11 @@ if not filtered_df.empty:
                     
                     with st.expander(expander_title):
                         # Display analysis information in a clean format
-                        if 'analysis_confidence' in analysis:
-                            st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Confidence:</strong> {analysis['analysis_confidence']}</div>", unsafe_allow_html=True)
+                        if 'analysis_compatibility' in analysis:
+                            st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Compatibility:</strong> {analysis['analysis_compatibility']}%</div>", unsafe_allow_html=True)
 
-                        if 'original_confidence' in analysis:
-                            st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Original Confidence:</strong> {analysis['original_confidence']}</div>", unsafe_allow_html=True)                        
+                        if 'original_compatibility' in analysis:
+                            st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Original Compatibility:</strong> {analysis['original_compatibility']}%</div>", unsafe_allow_html=True)                        
 
                         if 'analysis_explanation' in analysis:
                             st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Explanation:</strong> {analysis['analysis_explanation']}</div>", unsafe_allow_html=True)

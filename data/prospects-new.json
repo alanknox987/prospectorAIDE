@@ -7,7 +7,7 @@
         "date": "2025-05-02T18:22:18",
         "company": "",
         "location": "",
-        "confidence": 0,
+        "compatibility": 0,
         "index": 0
     },
     {
@@ -18,7 +18,7 @@
         "date": "2025-05-02T18:22:18",
         "company": "David Yurman",
         "location": "Miami",
-        "confidence": 50,
+        "compatibility": 50,
         "index": 1
     },
     {
@@ -29,10 +29,10 @@
         "date": "2025-05-02T18:22:18",
         "company": "Walmart",
         "location": "Cypress, Texas; Frisco and Melissa, Texas; Eagle Mountain, Utah; Eastvale, California; Tuscaloosa, Alabama; Milton and Pace, Florida; Mountain View, California; East Windsor, New Jersey",
-        "confidence": 90,
+        "compatibility": 90,
         "index": 2,
         "analysis": {
-            "analysis_confidence": 90,
+            "analysis_compatibility": 90,
             "analysis_explanation": "The article discusses Walmart's plans to open and remodel multiple stores across various locations, aligning well with the criteria for multiple site projects.",
             "analysis_company": "Walmart",
             "analysis_location": "Cypress, Texas; Frisco and Melissa, Texas; Eagle Mountain, Utah; Eastvale, California; Tuscaloosa, Alabama; Milton and Pace, Florida; Mountain View, California; East Windsor, New Jersey",
@@ -40,7 +40,7 @@
             "analysis_summary": "Walmart is opening a new 'store of the future' in Cypress, Texas, and plans to open and remodel multiple stores across the U.S. by 2025, featuring modernized layouts and services.",
             "analysis_date": "2025-05-02 15:43:26",
             "analysis_id": "f7e86faf-f3c5-43fc-97e4-d2dad4c9781e",
-            "original_confidence": 70
+            "original_compatibility": 70
         }
     },
     {
@@ -51,7 +51,7 @@
         "date": "2025-05-02T18:22:18",
         "company": "",
         "location": "",
-        "confidence": 0,
+        "compatibility": 0,
         "index": 3
     },
     {
@@ -62,7 +62,7 @@
         "date": "2025-05-02T18:22:18",
         "company": "",
         "location": "",
-        "confidence": 0,
+        "compatibility": 0,
         "index": 4
     },
     {
@@ -73,7 +73,7 @@
         "date": "2025-05-02T18:22:18",
         "company": "",
         "location": "",
-        "confidence": 0,
+        "compatibility": 0,
         "index": 5
     },
     {
@@ -84,7 +84,7 @@
         "date": "2025-05-02T18:22:18",
         "company": "L'Oreal",
         "location": "",
-        "confidence": 0,
+        "compatibility": 0,
         "index": 6
     },
     {
@@ -95,7 +95,7 @@
         "date": "2025-05-02T18:22:18",
         "company": "7-Eleven",
         "location": "",
-        "confidence": 30,
+        "compatibility": 30,
         "index": 7
     },
     {
@@ -106,10 +106,10 @@
         "date": "2025-05-02T18:22:18",
         "company": "Playa Bowls",
         "location": "North Carolina's Triad region (Greensboro, Winston-Salem, High Point)",
-        "confidence": 90,
+        "compatibility": 90,
         "index": 8,
         "analysis": {
-            "analysis_confidence": 90,
+            "analysis_compatibility": 90,
             "analysis_explanation": "The article discusses Playa Bowls' plans for multiple new store openings in North Carolina, which aligns well with the criteria for commercial building or store opening projects for multiple sites.",
             "analysis_company": "Playa Bowls",
             "analysis_location": "North Carolina's Triad region (Greensboro, Winston-Salem, High Point)",
@@ -117,7 +117,7 @@
             "analysis_summary": "Playa Bowls plans to open seven new locations in North Carolina's Triad region, expanding its presence in the state. The company is seeking spaces between 1,000 and 2,000 sq. ft. in strategic retail centers.",
             "analysis_date": "2025-05-02 15:43:31",
             "analysis_id": "4eb1e8cf-0dde-44e3-96dd-c461f77c8577",
-            "original_confidence": 60
+            "original_compatibility": 60
         }
     },
     {
@@ -128,7 +128,7 @@
         "date": "2025-05-02T18:22:18",
         "company": "Biggby Coffee",
         "location": "",
-        "confidence": 50,
+        "compatibility": 50,
         "index": 9
     },
     {
@@ -139,7 +139,7 @@
         "date": "2025-05-02T12:24:32",
         "company": "",
         "location": "",
-        "confidence": 0,
+        "compatibility": 0,
         "index": 10
     },
     {
@@ -150,7 +150,7 @@
         "date": "2025-05-02T12:24:32",
         "company": "Amazon",
         "location": "",
-        "confidence": 0,
+        "compatibility": 0,
         "index": 11
     },
     {
@@ -161,7 +161,7 @@
         "date": "2025-05-02T12:24:32",
         "company": "Albertsons, Instacart",
         "location": "",
-        "confidence": 0,
+        "compatibility": 0,
         "index": 12
     },
     {
@@ -172,7 +172,7 @@
         "date": "2025-05-02T12:24:32",
         "company": "Publix",
         "location": "",
-        "confidence": 0,
+        "compatibility": 0,
         "index": 13
     },
     {
@@ -183,7 +183,7 @@
         "date": "2025-05-02T12:24:32",
         "company": "Tanger",
         "location": "",
-        "confidence": 0,
+        "compatibility": 0,
         "index": 14
     },
     {
@@ -194,7 +194,7 @@
         "date": "2025-05-02T12:24:32",
         "company": "Instacart",
         "location": "",
-        "confidence": 0,
+        "compatibility": 0,
         "index": 15
     },
     {
@@ -205,7 +205,7 @@
         "date": "2025-05-02T12:24:32",
         "company": "Amazon",
         "location": "",
-        "confidence": 10,
+        "compatibility": 10,
         "index": 16
     },
     {
@@ -216,7 +216,7 @@
         "date": "2025-05-02T12:24:32",
         "company": "L.L.Bean",
         "location": "",
-        "confidence": 0,
+        "compatibility": 0,
         "index": 17
     },
     {
@@ -227,7 +227,7 @@
         "date": "2025-05-02T12:24:32",
         "company": "Sleep Number",
         "location": "",
-        "confidence": 0,
+        "compatibility": 0,
         "index": 18
     },
     {
@@ -238,7 +238,7 @@
         "date": "2025-05-02T12:24:32",
         "company": "eBay",
         "location": "",
-        "confidence": 0,
+        "compatibility": 0,
         "index": 19
     },
     {
@@ -249,7 +249,7 @@
         "date": "2025-05-01T13:33:30",
         "company": "Kohl\u00e2\u0080\u0099s",
         "location": "",
-        "confidence": 0,
+        "compatibility": 0,
         "index": 20
     }
 ]
