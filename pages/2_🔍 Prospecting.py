@@ -5,7 +5,9 @@ import sys
 
 # Add parent directory to path to import utils
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from utils import load_json_file, save_json_file, analyze_article, analyze_all, keep_article, keep_all_articles, get_articles_df
+from utils import (load_json_file, save_json_file, analyze_article, 
+                  analyze_all, keep_article, keep_all_articles, 
+                  get_articles_df, generate_criteria_from_feedback)
 
 # Initialize session state variables
 if 'analyze_process_started' not in st.session_state:
@@ -269,20 +271,25 @@ if st.session_state.keep_process_started and not st.session_state.keep_process_c
     
     with progress_container:
         with st.spinner("Keeping all articles..."):
-            # Keep all articles
-
             # Get the list of article IDs from the filtered DataFrame
             filtered_article_ids = filtered_df['articleID'].tolist() if not filtered_df.empty else []
             
             if filtered_article_ids:
-                # Only analyze articles that match the filter
+                # Only keep articles that match the filter
                 filtered_articles = [a for a in articles if a.get('articleID') in filtered_article_ids]
-                # Run analysis on filtered articles
+                
+                st.write(f"Debug: Found {len(filtered_articles)} articles to keep")
+                
+                # Run keep_all_articles on filtered articles
                 kept_count = keep_all_articles(filtered_articles, KEPT_PROSPECTS_FILE)
+                
                 # Store count for success message
                 st.session_state.kept_articles_count = kept_count
-                # Mark as complete
-                st.session_state.keep_process_complete = True
+            else:
+                st.session_state.kept_articles_count = 0
+                
+            # Mark as complete
+            st.session_state.keep_process_complete = True
     
     # Force a rerun to refresh the page and show the success message
     st.rerun()
@@ -399,11 +406,56 @@ if not filtered_df.empty:
                         if 'analysis_summary' in analysis and analysis['analysis_summary']:
                             st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Project Summary:</strong> {analysis['analysis_summary']}</div>", unsafe_allow_html=True)
 
-                feedback_expander_title = f"Provide feedback"
-                
+                feedback_expander_title = "Provide feedback"
+                                
                 with st.expander(feedback_expander_title):
-                    # Display feedback information
-                    feedback = st.text_area("Feedback", height=100, key=f"feeedback_{article_id}", placeholder="Provide feedback to improve analysis.")
+                    # Check if feedback has been submitted recently
+                    feedback_submitted_key = f"feedback_{article_id}_submitted"
+                    feedback_key = f"feedback_{article_id}"
+                    
+                    # Initialize feedback in session state if not present
+                    if feedback_key not in st.session_state:
+                        st.session_state[feedback_key] = ""
+                    
+                    # Create a form to collect feedback
+                    with st.form(key=f"feedback_form_{article_id}"):
+                        # Use session state to maintain the feedback text
+                        feedback = st.text_area("Feedback", value=st.session_state[feedback_key], 
+                                            height=100, key=f"textarea_{article_id}",
+                                            placeholder="Provide feedback to improve analysis.")
+                        
+                        # Submit button for the form
+                        submit_feedback = st.form_submit_button("Submit Feedback")
+                        
+                    # Process feedback when submitted
+                    if submit_feedback and feedback.strip():
+                        # Save the feedback text
+                        st.session_state[feedback_key] = feedback
+                        
+                        with st.spinner("Processing feedback..."):
+                            try:
+                                # Call the generate_criteria_from_feedback function from utils
+                                new_criteria = generate_criteria_from_feedback(article, feedback)
+                                
+                                if new_criteria and isinstance(new_criteria, list) and len(new_criteria) > 0:
+                                    # Show success message
+                                    st.success(f"Feedback applied to criteria! Added {len(new_criteria)} new criteria.")
+                                    # Clear the feedback text after successful submission
+                                    st.session_state[feedback_key] = ""
+                                else:
+                                    st.warning("Feedback processed, but no new criteria were generated.")
+                                
+                                # Mark as submitted
+                                st.session_state[feedback_submitted_key] = True
+                                
+                                # Force a rerun to refresh the UI with cleared form
+                                st.rerun()
+                                
+                            except Exception as e:
+                                st.error(f"Error processing feedback: {str(e)}")
+                        
+                    # Provide a note about feedback usage
+                    st.caption("Your feedback helps refine our criteria for analyzing prospects.")
 
             with cols[1]:
                 # Stack buttons vertically to make them wider

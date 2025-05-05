@@ -12,16 +12,23 @@ from bs4 import BeautifulSoup
 from urllib.parse import urlparse
 
 def load_json_file(file_path):
-    """Load data from a JSON file, return empty list if file doesn't exist."""
+    """Load data from a JSON file, return empty list if file doesn't exist or is empty."""
     if os.path.exists(file_path):
         with open(file_path, 'r', encoding='utf-8') as file:
-            data = json.load(file)
-            # If loading from the main data file, make sure we have indexes
-            if file_path.endswith('pospects-new.json'):
-                # Make sure each article has an index for proper dataframe creation
-                for i, article in enumerate(data):
-                    article['index_pos'] = i
-            return data
+            content = file.read().strip()
+            if not content:  # File is empty
+                return []
+            try:
+                data = json.loads(content)
+                # If loading from the main data file, make sure we have indexes
+                if file_path.endswith('prospects-new.json'):
+                    # Make sure each article has an index for proper dataframe creation
+                    for i, article in enumerate(data):
+                        article['index_pos'] = i
+                return data
+            except json.JSONDecodeError:
+                print(f"JSON decode error in {file_path}, returning empty list")
+                return []
     return []
 
 def save_json_file(data, file_path):
@@ -335,16 +342,26 @@ def analyze_article(article):
 #    print(url_content)
 #    print("---")
 
+    # Load criteria from criteria.json
+    CRITERIA_FILE = "data/criteria.json"
+    try:
+        existing_criteria = load_json_file(CRITERIA_FILE)
+        
+        # Format criteria with bullet points for the prompt
+        criteria_list = "\n".join([f"* {item['criteria']}" for item in existing_criteria])
+        
+        # Log debug information
+        log_debug_info("Existing criteria loaded", existing_criteria)
+    except Exception as e:
+        # If there's an error loading the criteria file, create a default list
+        log_debug_info("Error loading criteria file", str(e))
+        criteria_list = "* No existing criteria found"
+
     # Create prompt for LLM
     prompt = f"""Examine the article contents provided. Determine how well the information in the article matches the following criteria:
 
-* Commerical building or store opening projects for multiple sites, stores, locations, etc
-* Commercial or store remodeling projects for multiple sites, stores, locations, etc
-* Large commercial building or store opening projects
-* Large commercial remodeling projects
-* Commerical building or store opening projects for multiple sites, stores, locations, etc
-* Commercial or store remodeling projects for multiple sites, stores, locations, etc
-* Projects involving multiple sites, stores, locations, etc should score higher than single location projects
+Criteria:
+{criteria_list}
 
 Create a criteria compatiblity score of 0-100 based on how well the information in the article matches the criteria. [analysis_compatibility]
 
@@ -482,9 +499,20 @@ def keep_article(article, kept_file):
     Returns True if successful, False otherwise.
     """
     try:
-        # Load existing kept articles
-        kept_articles = load_json_file(kept_file)
+        # Ensure the data directory exists
+        os.makedirs(os.path.dirname(kept_file), exist_ok=True)
         
+        # Load existing kept articles or initialize with empty list if file doesn't exist or is empty
+        if os.path.exists(kept_file):
+            with open(kept_file, 'r') as file:
+                content = file.read().strip()
+                if content:
+                    kept_articles = json.loads(content)
+                else:
+                    kept_articles = []
+        else:
+            kept_articles = []
+            
         # Check if article is already in kept articles
         article_ids = [a.get('articleID') for a in kept_articles]
         if article.get('articleID') in article_ids:
@@ -498,23 +526,41 @@ def keep_article(article, kept_file):
             kept_articles.append(article)
         
         # Save back to file
-        save_json_file(kept_articles, kept_file)
+        with open(kept_file, 'w') as file:
+            json.dump(kept_articles, file, indent=4)
         return True
     except Exception as e:
         print(f"Error keeping article: {e}")
         return False
-
+    
 def keep_all_articles(articles, kept_file):
     """
     Save all articles to the kept file.
     Returns the number of successfully kept articles.
     """
     successfully_kept = 0
-    for article in articles:
-        if keep_article(article, kept_file):
-            successfully_kept += 1
-    return successfully_kept
-
+    try:
+        print(f"Attempting to keep {len(articles)} articles")
+        # Ensure the data directory exists
+        os.makedirs(os.path.dirname(kept_file), exist_ok=True)
+        
+        # Initialize the file with an empty list if it doesn't exist
+        if not os.path.exists(kept_file):
+            with open(kept_file, 'w') as f:
+                f.write('[]')
+                
+        for article in articles:
+            if keep_article(article, kept_file):
+                successfully_kept += 1
+            else:
+                print(f"Failed to keep article: {article.get('title', 'Unknown')}")
+        
+        print(f"Successfully kept {successfully_kept} articles")
+        return successfully_kept
+    except Exception as e:
+        print(f"Error in keep_all_articles: {str(e)}")
+        return 0
+    
 def call_bedrock_llm(
     prompt: str,
     model_name: str = "us.amazon.nova-lite-v1:0",
@@ -937,7 +983,22 @@ def review_articles(articles):
         #    remainder = total_articles % num_batches
         #    if remainder < num_batches // 2:  # If remainder is significant
         #        num_batches += 1
-    
+
+    # Load criteria from criteria.json
+    CRITERIA_FILE = "data/criteria.json"
+    try:
+        existing_criteria = load_json_file(CRITERIA_FILE)
+        
+        # Format criteria with bullet points for the prompt
+        criteria_list = "\n".join([f"* {item['criteria']}" for item in existing_criteria])
+        
+        # Log debug information
+        log_debug_info("Existing criteria loaded", existing_criteria)
+    except Exception as e:
+        # If there's an error loading the criteria file, create a default list
+        log_debug_info("Error loading criteria file", str(e))
+        criteria_list = "* No existing criteria found"
+
     print(f"Processing {total_articles} articles in {num_batches} batches of approximately {batch_size} articles each")
     
     all_results = []
@@ -952,11 +1013,8 @@ def review_articles(articles):
         
         prompt = f"""Examine the article json information provided. Determine how well the information in the article matches the following criteria:
 
-* Commerical building or store opening projects for multiple sites, stores, locations, etc
-* Commercial or store remodeling projects for multiple sites, stores, locations, etc
-* Large commercial building or store opening projects
-* Large commercial remodeling projects
-* Projects involving multiple sites, stores, locations, etc should score higher than single location projects
+Criteria:
+{criteria_list}
 
 Create a "compatibility" score of 0 (does not match criteria) to 100 (matches criteria well) based on how well the information in the article matches the criteria. [compatibility]
 
@@ -1070,3 +1128,154 @@ def find_articles_chainstoreage(START_URL, CUTOFF_DATE):
 
     #print(f"Results saved to {OUTPUT_FILE}")
     return clean_articles
+
+def generate_criteria_from_feedback(article, feedback):
+    """
+    Generate new criteria based on user feedback and add them to criteria.json.
+    
+    Args:
+        article (dict): The article that the feedback relates to
+        feedback (str): The user's feedback text
+        
+    Returns:
+        dict: The criteria data generated by the LLM
+    """
+    # Load criteria from criteria.json
+    CRITERIA_FILE = "data/criteria.json"
+    try:
+        existing_criteria = load_json_file(CRITERIA_FILE)
+        
+        # Format criteria with bullet points for the prompt
+        criteria_list = "\n".join([f"* {item['criteria']}" for item in existing_criteria])
+        
+        # Log debug information
+        log_debug_info("Existing criteria loaded", existing_criteria)
+    except Exception as e:
+        # If there's an error loading the criteria file, create a default list
+        log_debug_info("Error loading criteria file", str(e))
+        criteria_list = "* No existing criteria found"
+        existing_criteria = []
+
+    print(f"--- Existing criteria ---\n{criteria_list}\n---")
+
+    # Create prompt for LLM
+    prompt = f"""You are an expert in generating criteria to match a user's feedback.
+You are building a criteria list to help rank data for potential sales prospects.
+Examine the criteria listed below and the user's feedback.
+Create one or two criteria in a similar format to the ones below that would help rank data for potential sales prospects.
+The criteria will be used to calculate a compatibility score between 0 and 100 based on how well the information matches the criteria.
+Only used the provided feedback to create new criteria.
+
+Criteria:
+{criteria_list}
+
+User's Feedback:
+{feedback}
+
+Output instructions:
+Output json format only as follows:
+[
+    {{
+        "criteria": "Generated criteria"
+    }},
+    ...
+]
+
+Output only json as listed above. Return your response in JSON format only, with no additional text."""
+
+    print(f"--- Feedback LLM prompt ---\n{prompt}\n---")
+
+    # Log debug information
+    log_debug_info("Feedback LLM prompt", prompt[:500] + "..." if len(prompt) > 500 else prompt)
+    
+    try:
+        # Call Bedrock LLM
+        llm_response = call_bedrock_llm(prompt)
+        
+        # Debug log
+        log_debug_info("Feedback LLM raw response", llm_response)
+        print(f"--- Feedback LLM raw response ---\n{llm_response}\n---")
+        
+        # Check if response is empty or not valid JSON
+        if not llm_response or not llm_response.strip():
+            raise ValueError("Received empty response from LLM")
+        
+        # Try to parse the response as JSON
+        criteria_data = []
+        try:
+            # First, check if the response is a valid JSON array
+            if llm_response.strip().startswith('[') and llm_response.strip().endswith(']'):
+                criteria_data = json.loads(llm_response)
+            else:
+                # If we get fragments of JSON objects without array brackets, fix it
+                fixed_response = llm_response.strip()
+                
+                # If it's JSON objects without the array brackets, add them
+                if fixed_response.startswith('{') and fixed_response.endswith('}'):
+                    fixed_response = '[' + fixed_response + ']'
+                # If it's multiple JSON objects like {obj1},{obj2}, wrap them in brackets
+                elif '},{' in fixed_response:
+                    # Make sure we're not already starting with a bracket
+                    if not fixed_response.startswith('['):
+                        fixed_response = '[' + fixed_response
+                    # Make sure we're not already ending with a bracket
+                    if not fixed_response.endswith(']'):
+                        fixed_response = fixed_response + ']'
+                
+                try:
+                    criteria_data = json.loads(fixed_response)
+                except json.JSONDecodeError:
+                    # If that failed, try more aggressive fixes
+                    # Extract just the objects
+                    pattern = r'(\{[^{}]*"criteria":[^{}]*\})'
+                    matches = re.findall(pattern, fixed_response, re.DOTALL)
+                    
+                    if matches:
+                        try:
+                            # Join them with commas and wrap in brackets
+                            fixed_json = '[' + ','.join(matches) + ']'
+                            criteria_data = json.loads(fixed_json)
+                        except json.JSONDecodeError:
+                            # Handle individual objects one by one
+                            criteria_data = []
+                            for obj_str in matches:
+                                try:
+                                    obj = json.loads(obj_str)
+                                    criteria_data.append(obj)
+                                except json.JSONDecodeError:
+                                    # Skip invalid objects
+                                    continue
+        except Exception as e:
+            log_debug_info("JSON parsing error", str(e))
+            print(f"JSON parsing error: {str(e)}")
+            criteria_data = []
+
+        print(f"--- Feedback LLM parsed response ---\n{criteria_data}\n---")
+
+        # Check if we got valid criteria data and store in criteria.json file
+        if criteria_data and isinstance(criteria_data, list):
+            # Get unique criteria by removing duplicates
+            existing_criteria_texts = [item['criteria'] for item in existing_criteria]
+            
+            # Only add new criteria that don't already exist
+            new_criteria_added = False
+            for criteria_item in criteria_data:
+                if criteria_item.get('criteria') and criteria_item['criteria'] not in existing_criteria_texts:
+                    existing_criteria.append(criteria_item)
+                    new_criteria_added = True
+            
+            # Save back to file if new criteria were added
+            if new_criteria_added:
+                save_json_file(existing_criteria, CRITERIA_FILE)
+                log_debug_info("New criteria added to file", criteria_data)
+            else:
+                log_debug_info("No new unique criteria to add", criteria_data)
+
+    except Exception as e:
+        # Log the error
+        log_debug_info("Error in generate_criteria_from_feedback", str(e))
+        # Return empty result on error
+        return []
+
+    # Return the newly generated criteria
+    return criteria_data

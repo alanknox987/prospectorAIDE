@@ -63,7 +63,6 @@ def load_kept_data():
     return articles
 
 kept_articles = load_kept_data()
-
 # Check if there are any kept articles
 if not kept_articles:
     st.warning("No prospects have been kept yet. Please go to the Prospecting page and keep some prospects first.")
