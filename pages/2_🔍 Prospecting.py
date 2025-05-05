@@ -399,6 +399,12 @@ if not filtered_df.empty:
                         if 'analysis_summary' in analysis and analysis['analysis_summary']:
                             st.markdown(f"<div class='analysis-item'><strong class='analysis-label'>Project Summary:</strong> {analysis['analysis_summary']}</div>", unsafe_allow_html=True)
 
+                feedback_expander_title = f"Provide feedback"
+                
+                with st.expander(feedback_expander_title):
+                    # Display feedback information
+                    feedback = st.text_area("Feedback", height=100, key=f"feeedback_{article_id}", placeholder="Provide feedback to improve analysis.")
+
             with cols[1]:
                 # Stack buttons vertically to make them wider
                 # Only show buttons if not in the middle of a process

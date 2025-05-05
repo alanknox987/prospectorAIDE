@@ -956,8 +956,6 @@ def review_articles(articles):
 * Commercial or store remodeling projects for multiple sites, stores, locations, etc
 * Large commercial building or store opening projects
 * Large commercial remodeling projects
-* Commerical building or store opening projects for multiple sites, stores, locations, etc
-* Commercial or store remodeling projects for multiple sites, stores, locations, etc
 * Projects involving multiple sites, stores, locations, etc should score higher than single location projects
 
 Create a "compatibility" score of 0 (does not match criteria) to 100 (matches criteria well) based on how well the information in the article matches the criteria. [compatibility]
