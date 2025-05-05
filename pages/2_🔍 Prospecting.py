@@ -500,7 +500,7 @@ if not filtered_df.empty:
                                 st.error(f"Failed to keep article.")
 
             # Much thinner separator line using the CSS class
-            st.markdown("<hr class='article-separator'>", unsafe_allow_html=True)
+            st.markdown("<p class='article-separator'>", unsafe_allow_html=True)
         else:
             st.info("No articles found matching your filters.")
 
