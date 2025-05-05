@@ -13,5 +13,11 @@
     },
     {
         "criteria": "Projects involving multiple sites, stores, locations, etc should score higher than single location projects"
+    },
+    {
+        "criteria": "Projects located outside of Texas"
+    },
+    {
+        "criteria": "Projects with at least one location outside of Texas should score higher than projects exclusively in Texas"
     }
 ]

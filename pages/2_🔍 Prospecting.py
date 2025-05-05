@@ -161,7 +161,7 @@ with col4:
 with col5:
     # Sorting options (now in the fifth column)
     sort_options = ['Date (newest first)', 'Date (oldest first)', 
-                   'compatibility (highest first)', 'compatibility (lowest first)']
+                   'Compatibility (highest first)', 'Compatibility (lowest first)']
     sort_selection = st.selectbox("Sort By", sort_options)
 
 # Apply filters

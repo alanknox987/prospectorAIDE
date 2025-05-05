@@ -1156,23 +1156,34 @@ def generate_criteria_from_feedback(article, feedback):
         criteria_list = "* No existing criteria found"
         existing_criteria = []
 
-    print(f"--- Existing criteria ---\n{criteria_list}\n---")
+    #print(f"--- Existing criteria ---\n{criteria_list}\n---")
+
+    article_content = f"Title: {article.get('title', '')}\nCompatibility: {article.get('compatibility', '')}\nExcerpt: {article.get('excerpt', '')}\nCompany: {article.get('company', '')}\nLocation: {article.get('location', '')}\n"
+    if 'analysis' in article:
+        article_content += f"Explanation: {article['analysis']['analysis_explanation']}\nSummary: {article['analysis']['analysis_summary']}\n"
+
+    #print(f"---- Article content ---\n{article_content}\n---")
 
     # Create prompt for LLM
     prompt = f"""You are an expert in generating criteria to match a user's feedback.
 You are building a criteria list to help rank data for potential sales prospects.
 Examine the criteria listed below and the user's feedback.
+The user's feedback is related to the article content.
+
 Create one or two criteria in a similar format to the ones below that would help rank data for potential sales prospects.
 The criteria will be used to calculate a compatibility score between 0 and 100 based on how well the information matches the criteria.
 Only used the provided feedback to create new criteria.
 
-Criteria:
+**Criteria:
 {criteria_list}
 
-User's Feedback:
+**User's Feedback:
 {feedback}
 
-Output instructions:
+**Article Content:
+{article_content}
+
+**Output instructions:
 Output json format only as follows:
 [
     {{
@@ -1183,7 +1194,7 @@ Output json format only as follows:
 
 Output only json as listed above. Return your response in JSON format only, with no additional text."""
 
-    print(f"--- Feedback LLM prompt ---\n{prompt}\n---")
+    #print(f"--- Feedback LLM prompt ---\n{prompt}\n---")
 
     # Log debug information
     log_debug_info("Feedback LLM prompt", prompt[:500] + "..." if len(prompt) > 500 else prompt)
@@ -1194,7 +1205,7 @@ Output only json as listed above. Return your response in JSON format only, with
         
         # Debug log
         log_debug_info("Feedback LLM raw response", llm_response)
-        print(f"--- Feedback LLM raw response ---\n{llm_response}\n---")
+        #print(f"--- Feedback LLM raw response ---\n{llm_response}\n---")
         
         # Check if response is empty or not valid JSON
         if not llm_response or not llm_response.strip():
@@ -1247,10 +1258,10 @@ Output only json as listed above. Return your response in JSON format only, with
                                     continue
         except Exception as e:
             log_debug_info("JSON parsing error", str(e))
-            print(f"JSON parsing error: {str(e)}")
+            #print(f"JSON parsing error: {str(e)}")
             criteria_data = []
 
-        print(f"--- Feedback LLM parsed response ---\n{criteria_data}\n---")
+        #print(f"--- Feedback LLM parsed response ---\n{criteria_data}\n---")
 
         # Check if we got valid criteria data and store in criteria.json file
         if criteria_data and isinstance(criteria_data, list):
